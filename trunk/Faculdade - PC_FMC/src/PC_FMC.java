@@ -332,7 +332,7 @@ class Matriz{
 					mostrarMatrizResult(x,yb);
 				}
 			}
-			if(multiplicar==5 && y!=xb){
+			if(multiplicar==5 && y!=xb){	//ok
 				System.out.println("O numero de COLUNAS de A nao e igual o numero de LINHAS de B");
 			}	
 			break;
@@ -561,7 +561,7 @@ class Matriz{
 	
 	}
 	
-	void mostrarMatrizResult(int x,int y){
+	void mostrarMatrizResult(int x,int y){	//ok
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
 				System.out.print(matrizresult[i][j]+"\t" );
