@@ -331,6 +331,7 @@ class Matriz{
 					matrizresult[1][2]=a23;
 					mostrarMatrizResult(x,yb);
 				}
+				// Comentario de teste
 			}
 			if(multiplicar==5 && y!=xb){	//ok
 				System.out.println("O numero de COLUNAS de A nao e igual o numero de LINHAS de B");
