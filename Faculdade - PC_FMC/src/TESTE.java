@@ -20,7 +20,7 @@ public class TESTE {
 	
 		sn=Math.pow((1+1),1)*1;
 	
-	System.out.println(sn);*/
+	System.out.println(sn);
 		int x=2,y=2,n,i,j;
 		int matriz[][];
 		matriz=new int[x][y];
@@ -32,7 +32,14 @@ public class TESTE {
 			}
 		}
 		System.out.println(matriz[x-1][y-1] + " FDP " + matriz[x-1][0]);
-		
+		*/
+		int x=0;
+		if(x==0){
+			System.out.println("UI");
+		}
+		else if(x==0 || x==1){
+			System.out.println("OIE");
+		}
 	}
 
 }
