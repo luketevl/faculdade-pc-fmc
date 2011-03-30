@@ -50,21 +50,20 @@ class Matriz{
 	}
 	
 	void ordemMatriz(){		//ok
-		System.out.print("Digite o número de linhas: ");
-		x=op.nextInt();
-		System.out.print("Digite o numero de colunas: ");
+		System.out.print("Digite o numero de linhas de A: ");
+		x=op.nextInt();	
+		System.out.print("Digite o numero de colunas de A:  ");
 		y=op.nextInt();
 		verificaLinhasColunas();
 		setMatriz();
-	}
-	
+}
 	void ordemMatrizB(){	//ok
-		ordemMatriz();
+		//ordemMatriz();
 		System.out.print("Digite o número de linhas de B: ");
 		xb=op.nextInt();
 		System.out.print("Digite o numero de colunas de B: ");
 		yb=op.nextInt();
-		verificaLinhasColunas();
+		verificaLinhasColunasB();
 		setMatrizB();
 		
 	}
@@ -503,6 +502,7 @@ class Matriz{
 		case(0): //ok
 			break menu;
 		case(1):{ //ok
+			ordemMatriz();
 			ordemMatrizB();
 			criarMatrizB();
 			operacoesMatriz();
@@ -601,14 +601,17 @@ class Matriz{
 	}
 	
 	void verificaLinhasColunas(){	//ok
-		if (x==0){
-			System.out.println("Número de Linhas nao podem ser 0 ");
-		}
-		if (y==0){
-			System.out.println("Número de Colunas não podem ser 0");
+		if (x==0 || y==0){
+			System.out.println("Número de Linhas/Colunas nao podem ser 0 ");
+			ordemMatriz();
 		}
 	}
-	
+	void verificaLinhasColunasB(){
+		if (xb==0 || yb==0){
+			System.out.println("Número de Linhas/Colunas nao podem ser 0 ");
+			ordemMatrizB();
+		}
+	}
 	void criarMenu(){	//ok
 		int option=0;
 		menu : while(option==0){
