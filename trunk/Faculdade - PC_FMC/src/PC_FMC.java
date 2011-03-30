@@ -70,7 +70,116 @@ class Matriz{
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	
+	void tipoMatrizB(){
+		// Validacao Matriz B
+			if(xb==1){
+				System.out.println("Esta matriz e do tipo: LINHA"); //ok
+			}
+			if(yb==1){
+				System.out.println("Esta matriz e do tipo: COLUNA"); //ok
+			}
+			if(xb==yb){
+				System.out.println("Esta matriz e QUADRADA");	//ok
+			}
+			if(xb==0 && yb==0){
+				System.out.println("Esta matriz e NULA"); //ok
+			}
+			if(xb==0 && yb==0){
+				System.out.println("Não é Matriz"); //ok
+			}
+					//elementos nao pertecentes a diagonal principal sao 0 ok.
+				int verif=0;
+			 	for (i = 0; i < xb; i++) {
+				for (j = 0; j < yb; j++) {
+					if(i!=j && matrizB[i][j]==0){
+						verif++;
+					}
+			}
+			 	}
+				if(xb*yb-xb==verif++){
+					System.out.println("Esta matriz e DIAGONAL");	//ok
+				}
+				
+					//elementos diagonal principal = 1  ok
+				int verif2=0;
+			 	for (i = 0; i < xb; i++) {
+				for (j = 0; j < yb; j++) {
+					if(i==j && matrizB[i][j]==1){
+						verif2++;
+					}
+			}
+			 	}
+				if(verif2==xb){
+					System.out.println("Esta matriz e IDENTIDADE");	//ok
+				}
+					/*//matriz transpota VERIFICAR
+				int verif3=0;
+				if(x==yb && y==xb){
+					for(i=0;i<x;i++){
+						for(j=0;i<y;i++){
+							for(int ib=0;ib<xb;ib++){
+								for(int jb=0;jb<yb;jb++){
+									if(matriz[i][j]==matrizB[ib][jb]){
+										verif3++;
+								}
+							}
+						}
+					}
+				}
+					if(verif3==x*y){
+					System.out.println("Matriz B e a transposta de A");
+			}
+				}*/
+
+				//elementos simetricos a diagonal principal sao IGUAIS // ok			
+			if(matrizB[0][yb-1]==matrizB[xb-1][0]){
+				System.out.println("Esta matriz e SIMETRICA");
+			}
+			
+				//elementos simetricos a diagonal principal sao OPOSTOS(4 -4) // ok	
+			if(matrizB[0][yb-1]==matrizB[xb-1][0]*(-1)){
+				System.out.println("Esta matriz e ANTI SIMETRICA");
+			}
+			
+			//matriz quadrada em que TODOS os elementos ABAIXO da diagonal principal sao NULOS
+			int verif9=0;
+			for (i = 0; i < xb; i++) {
+				for (j = 0; j < yb; j++) {
+					if(i>j && matrizB[i][j]==0){
+						verif9++;
+					}
+				}
+			}
+			if(verif9==xb){
+				System.out.println("Esta matriz e TRIANGULAR SUPERIOR");
+			}
+			
+			//matriz quadrada em que TODOS os elementos ACIMA da diagonal principal sao NULOS //ok
+			int verif10=0;
+			for (i = 0; i < xb; i++) {
+				for (j = 0; j < yb; j++) {
+					if(i<j && matrizB[i][j]==0){
+						verif10++;
+					}
+				}
+			}
+			if(verif10==xb){
+				System.out.println("Esta matriz e TRIANGULAR INFERIOR");
+			}
+			if(xb==x && yb==y){ //ok
+				int verif11=0;
+				for(i=0;i<xb;i++){
+					for(j=0;j<yb;j++){
+						if(matrizB[i][j]==matriz[i][j]){
+							verif11++;
+						}
+					}
+				}
+				if(verif11==xb*yb){
+					System.out.println("Matriz A e B sao IGUAIS");	//ok
+				}
+			}
+	}
 	void tipoMatriz(){
 		int sn;
 		System.out.println("Gostaria de saber o tipo de qual matriz?");
@@ -90,7 +199,7 @@ class Matriz{
 		if(x==0 && y==0){
 			System.out.println("Não é Matriz"); //ok
 		}
-				//elementos nao pertecentes a diagonal principal sao 0  VERIFICAR.
+				//elementos nao pertecentes a diagonal principal sao 0 ok.
 			int verif=0;
 		 	for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
@@ -115,7 +224,7 @@ class Matriz{
 			if(verif2==x){
 				System.out.println("Esta matriz e IDENTIDADE");	//ok
 			}
-				//matriz transpota VERIFICAR
+				/*//matriz transpota VERIFICAR
 			int verif3=0;
 			if(x==yb && y==xb){
 				for(i=0;i<x;i++){
@@ -129,9 +238,10 @@ class Matriz{
 					}
 				}
 			}
-				//if(verif3==)
-				//System.out.println("Matriz B e a transposta de A");
+				if(verif3==x*y){
+				System.out.println("Matriz B e a transposta de A");
 		}
+			}*/
 
 			//elementos simetricos a diagonal principal sao IGUAIS // ok			
 		if(matriz[0][y-1]==matriz[x-1][0]){
@@ -181,22 +291,10 @@ class Matriz{
 				System.out.println("Matriz A e B sao IGUAIS");	//ok
 			}						
 		}		
-			// Validacao Matriz B
-		if(sn==2) {
-			if(xb==1){
-				System.out.println("Esta matriz e do tipo: LINHA"); //ok
-			}
-			if(yb==1){
-				System.out.println("Esta matriz e do tipo: COLUNA"); //ok
-			}
-			if(xb==yb){
-				System.out.println("Esta matriz e QUADRADA");	//ok
-			}
-			if(xb==0 && yb==0){
-				System.out.println("Esta matriz e NULA"); //ok
-			}
+		else if(sn==2){
+				tipoMatrizB();
+		}	
 	}
-		}
 	
 	void operacoesMatriz(){ //falta determinar INVERSA e MULTIPLICAR pela MATRIZ B
 		int operacoesMatriz;
