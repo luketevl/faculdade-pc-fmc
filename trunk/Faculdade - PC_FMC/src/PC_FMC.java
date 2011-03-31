@@ -111,24 +111,21 @@ class Matriz{
 				if(verif2==xb){
 					System.out.println("Esta matriz e IDENTIDADE");	//ok
 				}
-					/*//matriz transpota VERIFICAR
+					//matriz transpota VERIFICAR
 				int verif3=0;
-				if(x==yb && y==xb){
-					for(i=0;i<x;i++){
-						for(j=0;i<y;i++){
-							for(int ib=0;ib<xb;ib++){
-								for(int jb=0;jb<yb;jb++){
-									if(matriz[i][j]==matrizB[ib][jb]){
+				if(xb==x && yb==y){
+					for(i=0;i<xb;i++){
+							for(int j=0;j<yb;j++){
+									if(matrizB[j][i]==matriz[i][j]){
 										verif3++;
-								}
 							}
 						}
 					}
 				}
 					if(verif3==x*y){
-					System.out.println("Matriz B e a transposta de A");
+					System.out.println("Matriz A e a transposta de B");
 			}
-				}*/
+				System.out.println(verif3);
 
 				//elementos simetricos a diagonal principal sao IGUAIS // ok			
 			if(matrizB[0][yb-1]==matrizB[xb-1][0]){
@@ -223,24 +220,20 @@ class Matriz{
 			if(verif2==x){
 				System.out.println("Esta matriz e IDENTIDADE");	//ok
 			}
-				/*//matriz transpota VERIFICAR
+				//matriz transpota VERIFICAR
 			int verif3=0;
-			if(x==yb && y==xb){
+			if(x==xb && y==yb){
 				for(i=0;i<x;i++){
-					for(j=0;i<y;i++){
-						for(int ib=0;ib<xb;ib++){
-							for(int jb=0;jb<yb;jb++){
-								if(matriz[i][j]==matrizB[ib][jb]){
+						for(int jb=0;jb<yb;jb++){
+								if(matriz[jb][i]==matrizB[i][jb]){
 									verif3++;
-							}
 						}
 					}
 				}
-			}
 				if(verif3==x*y){
-				System.out.println("Matriz B e a transposta de A");
+					System.out.println("Matriz B e a transposta de A");
+			}
 		}
-			}*/
 
 			//elementos simetricos a diagonal principal sao IGUAIS // ok			
 		if(matriz[0][y-1]==matriz[x-1][0]){
@@ -289,9 +282,10 @@ class Matriz{
 			if(verif11==x*y){
 				System.out.println("Matriz A e B sao IGUAIS");	//ok
 			}						
-		}		
-		else if(sn==2){
-				tipoMatrizB();
+		}
+	
+		if(sn==2){
+			tipoMatrizB();
 		}	
 	}
 	
