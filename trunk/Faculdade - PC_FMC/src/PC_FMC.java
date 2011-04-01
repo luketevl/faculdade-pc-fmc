@@ -3,9 +3,9 @@ import java.text.NumberFormat;
 
 class Matriz{
 	Scanner op = new Scanner(System.in);
-	private int j, i,n,diagPrinc,diagSecond,sarrus,operacoesValor,xb,yb;
-	private int x=2,y=2;
-	private int matriz[][],matrizB[][],matrizresult[][];	
+	private int j, i,n,diagPrinc,diagSecond,sarrus,operacoesValor;
+	private int x=1,y=2,xb=2,yb=1;
+	private int matriz[][],matrizB[][],matrizresult[][],matrizteste[][];	
 
 	void principalMenu(){	//ok
 		int princMenu;
@@ -89,7 +89,7 @@ class Matriz{
 			int oposto = 0;
 			//matriz oposto quando o produto da 0
 			if(x!=xb || y!=yb){
-			System.out.println("Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM");	
+			System.out.println("Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM");	//ok	
 			operacoesMatriz();
 			}	
 			else {
@@ -102,14 +102,14 @@ class Matriz{
 								if(matriz[i][j]==0){
 									oposto++;
 										if(oposto==(x*y)){
-											System.out.println("A matriz A,B é oposto.");
+											System.out.println("A matriz A,B é oposto.");	//ok
 								}
 							}
 						}
 					}
 				}
 			}
-			mostrarMatrizResult();
+				mostrarMatrizResult();
 			}
 			break;
 		case(2):	// ok
@@ -219,7 +219,56 @@ class Matriz{
 					matrizresult[1][2]=a23;
 					mostrarMatrizResult(x,yb);
 				}
-				// Comentario de teste
+				//----------------------------------
+					//1x2 2x1
+				
+					//1x2 2x2
+				
+					//1x2 2x3
+				
+					//1x2 2x4
+				
+					//1x3 3x1
+				
+					//1x3 3x2
+				
+					//1x3 3x3
+				
+					//1x3 3x4
+				
+					//1x4 4x1
+				
+					//1x4 4x2
+				
+					//1x4 4x3
+					
+					//1x4 4x4
+				
+				//----------------------------------
+				//3x2 2x1
+				
+				//3x2 2x2
+			
+				//3x2 2x3
+			
+				//3x2 2x4
+			
+				//3x3 3x1
+			
+				//3x3 3x2
+			
+				//3x3 3x3
+			
+				//3x3 3x4
+			
+				//4x4 4x1
+			
+				//4x4 4x2
+			
+				//4x4 4x3
+				
+				//4x4 4x4 
+			
 			}
 			if(multiplicar==5 && y!=xb){	//ok
 				System.out.println("O numero de COLUNAS de A nao e igual o numero de LINHAS de B!");
@@ -235,17 +284,15 @@ class Matriz{
 			System.out.println("1 - A");
 			System.out.println("2 - B");
 			int temp =op.nextInt();
-				if(temp==1){
-		}
 	}
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	void escolhaMatriz(){// verificar lei de formação
+	void escolhaMatriz(){// ok
 		int escMatriz;
 		//System.out.println("Escolha oque deseja fazer");
 		System.out.println("1 - Ja tenho os valores da matriz A e B");//ok
-		System.out.println("2 - Gostaria de informa a lei de formacao para A e B"); // verificar calculos
+		System.out.println("2 - Gostaria de informa a lei de formacao para A e B"); // ok
 		System.out.println("3 - Gerar uma matriz aleatoria");	//ok
 		System.out.println("0 - Sair"); //ok
 		escMatriz=op.nextInt();
@@ -496,7 +543,7 @@ class Matriz{
 		}	
 	}
 	
-	void leiFormacao(){ // Verificar calculos
+	void leiFormacao(){ // ok
 		int igual,maior,menor;
 		setMatriz();
 		System.out.println("Quando i=j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
@@ -623,7 +670,7 @@ class Matriz{
 	}
 
 	void criarMatrizB(){ //ok
-		criarMatriz();
+		//criarMatriz();
 		int n;
 		for (i = 0; i < xb; i++) {
 			for (j = 0; j < yb; j++) {
@@ -754,7 +801,7 @@ class Matriz{
 		return y;
 	}
 	
-void setX(int x){//ok
+	void setX(int x){//ok
 		this.x=x;
 	}
 	void setY(int y){//ok
@@ -785,13 +832,60 @@ void setX(int x){//ok
 	void setMatrizResult(){//ok
 		matrizresult=new int[x][y];
 	}
+	
+	void setMatrizResult(int x,int yb){//ok
+		matrizresult=new int[x][yb];
+	}
+//------------------------------------------------ TESTES-------------------------------------------------
+	void mostrarMatrizTeste(int x,int y){	//ok
+		for (i = 0; i < x; i++) {
+			for (j = 0; j < y; j++) {
+				System.out.print(matrizteste[i][j]+"\t" );
+				}
+			System.out.println("");
+		}
+	}
+	void setMatrizTeste(int x,int y){
+		matrizteste=new int [x][y];
+	}
+void teste(){
+	setMatrizResult(x,yb);
+	setMatrizTeste(x,yb);
+	//setMatriz();
+	//setMatrizB();
+	
+	for(i=0;i<x;i++){
+		for(j=0;j<yb;j++){
+			for(int k=0;k<yb;k++){
+				matrizresult[i][i]=matriz[i][i]*matrizB[i][k];
+				//mostrarMatrizResult(x,yb);
+			}
+				}
+		}
+	
+	for(i=0;i<x;i++){
+			for(int k=0;k<yb;k++){
+				matrizteste[i][i]=matriz[i][i]*matrizB[i][k];
+				//mostrarMatrizTeste(x,yb);
+				}
+		}
+	
+	System.out.println("\n");
+	mostrarMatrizTeste(x,yb);
+	}
 }
 
 public class PC_FMC {
 
 	public static void main(String args[]) {
 		Matriz mat = new Matriz();
-		mat.principalMenu();
+		//mat.principalMenu();
+		mat.setMatriz();
+		mat.setMatrizB();
+		mat.criarMatriz();
+		mat.criarMatrizB();
+		mat.teste();
+		//System.out.println(mat.getX() +" "+ mat.getYB());
 		
 	}
 }
