@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.text.NumberFormat;
+import javax.swing.JOptionPane;
 
 class Matriz{
 	Scanner op = new Scanner(System.in);
@@ -9,11 +10,13 @@ class Matriz{
 
 	void principalMenu(){	//ok
 		int princMenu;
-		System.out.println("Seja Bem Vindo \nDeseja trabalhar com :");
-		System.out.println("1 - Matriz"); //ok
-		System.out.println("2 - Determinante"); //ok
-		System.out.println("0 - Sair");//ok
-		princMenu=op.nextInt();
+		try{
+		princMenu=Integer.parseInt(JOptionPane.showInputDialog(null,"Deseja trabalhar com : \n 1 - Matriz \n 2 - Determinante","Seja Bem Vindo!",JOptionPane.QUESTION_MESSAGE));
+		//System.out.println("Seja Bem Vindo \nDeseja trabalhar com :");
+		//System.out.println("1 - Matriz"); //ok
+		//System.out.println("2 - Determinante"); //ok
+		//System.out.println("0 - Sair");//ok
+		//princMenu=op.nextInt();
 		menuPrinc : switch(princMenu){
 		case(0):
 			break menuPrinc;
@@ -27,45 +30,63 @@ class Matriz{
 			criarMenu();
 			break;
 		}
+	}
+		catch(NumberFormatException e){
+			JOptionPane.showMessageDialog(null, "Encerrando o programa","Aguarde!",JOptionPane.WARNING_MESSAGE);
+		}
 		
 	}
 	
 	void redefinirOrdemMatriz(){ // ok
 		int redf;
-		System.out.println("Deseja Redefinir a ordem de sua Matriz?");
-		System.out.println("1 - Sim");
-		System.out.println("2 - Nao");
-		redf=op.nextInt();
+		redf=JOptionPane.showConfirmDialog(null,"Deseja Redefinir a ordem de sua Matriz?","Selecione uma opção",JOptionPane.INFORMATION_MESSAGE);
+	//	System.out.println("Deseja Redefinir a ordem de sua Matriz?");
+	//	System.out.println("1 - Sim");
+	//	System.out.println("2 - Nao");
+	//	redf=op.nextInt();
 		switch(redf){
-		case(1):
+		case(0):
 			ordemMatriz();
 			criarMatriz();
 			mostrarMatriz();
 			criarMenu();
 			break;
-		case(2):
+		case(1):
 			break;
 		}
 		
 	}
 	
 	void ordemMatriz(){		//ok
-		System.out.print("Digite o numero de linhas de A: ");
-		x=op.nextInt();	
-		System.out.print("Digite o numero de colunas de A:  ");
-		y=op.nextInt();
+		try{
+		x= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de linhas de A","Matriz A",JOptionPane.INFORMATION_MESSAGE));
+		//System.out.print("Digite o numero de linhas de A: ");
+		//x=op.nextInt();	
+		y = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de colunas de A","Matriz A",JOptionPane.INFORMATION_MESSAGE));
+		//System.out.print("Digite o numero de colunas de A:  ");
+		//y=op.nextInt();
 		verificaLinhasColunas();
 		setMatriz();
-}
+		}
+		catch(NumberFormatException e){
+			
+		}
+	}
 	void ordemMatrizB(){	//ok
 		//ordemMatriz();
-		System.out.print("Digite o número de linhas de B: ");
-		xb=op.nextInt();
-		System.out.print("Digite o numero de colunas de B: ");
-		yb=op.nextInt();
+		try{
+		xb= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de linhas de B","Matriz B",JOptionPane.INFORMATION_MESSAGE));
+		//System.out.print("Digite o número de linhas de B: ");
+		//xb=op.nextInt();
+		yb= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de colunas de B","Matriz B",JOptionPane.INFORMATION_MESSAGE));
+		//System.out.print("Digite o numero de colunas de B: ");
+		//yb=op.nextInt();
 		verificaLinhasColunasB();
 		setMatrizB();
-		
+		}
+		catch(NumberFormatException e){
+			
+		}
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -291,11 +312,13 @@ class Matriz{
 	void escolhaMatriz(){// ok
 		int escMatriz;
 		//System.out.println("Escolha oque deseja fazer");
-		System.out.println("1 - Ja tenho os valores da matriz A e B");//ok
-		System.out.println("2 - Gostaria de informa a lei de formacao para A e B"); // ok
-		System.out.println("3 - Gerar uma matriz aleatoria");	//ok
-		System.out.println("0 - Sair"); //ok
-		escMatriz=op.nextInt();
+		try{
+		escMatriz = Integer.parseInt(JOptionPane.showInputDialog(null," 1 - Ja tenho os valores da matriz A e B \n 2 - Gostaria de informa a lei de formacao para A e B \n 3 - Gerar uma matriz aleatoria"));
+	//	System.out.println("1 - Ja tenho os valores da matriz A e B");//ok
+	//	System.out.println("2 - Gostaria de informa a lei de formacao para A e B"); // ok
+	//	System.out.println("3 - Gerar uma matriz aleatoria");	//ok
+	//	System.out.println("0 - Sair"); //ok
+	//	escMatriz=op.nextInt();
 		menu : switch(escMatriz){
 		case(0): //ok
 			break menu;
@@ -318,26 +341,33 @@ class Matriz{
 			break;
 		}	
 	}
+		}
+		catch(NumberFormatException e){
+			
+		}
 }
 	
-		
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void tipoMatrizB(){ //ok
 		// Validacao Matriz B
 			if(xb==1){
-				System.out.println("Esta matriz e do tipo: LINHA"); //ok
+				JOptionPane.showMessageDialog(null, "Esta matriz e do tipo: LINHA","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e do tipo: LINHA"); //ok
 			}
 			if(yb==1){
-				System.out.println("Esta matriz e do tipo: COLUNA"); //ok
+				JOptionPane.showMessageDialog(null, "Esta matriz e do tipo: COLUNA","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e do tipo: COLUNA"); //ok
 			}
 			if(xb==yb){
-				System.out.println("Esta matriz e QUADRADA");	//ok
+				JOptionPane.showMessageDialog(null, "Esta matriz e QUADRADA","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e QUADRADA");	//ok
 			}
 			if(xb==0 && yb==0){
-				System.out.println("Esta matriz e NULA"); //ok
+				JOptionPane.showMessageDialog(null, "Esta matriz e NULA","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e NULA"); //ok
 			}
 			if(xb==0 && yb==0){
-				System.out.println("Não é Matriz"); //ok
+				JOptionPane.showMessageDialog(null, "Não é Matriz","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Não é Matriz"); //ok
 			}
 					//elementos nao pertecentes a diagonal principal sao 0 ok.
 				int verif=0;
@@ -349,7 +379,8 @@ class Matriz{
 			}
 			 	}
 				if(xb*yb-xb==verif++){
-					System.out.println("Esta matriz e DIAGONAL");	//ok
+					JOptionPane.showMessageDialog(null, "Esta matriz e DIAGONAL","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+					//System.out.println("Esta matriz e DIAGONAL");	//ok
 				}
 				
 					//elementos diagonal principal = 1  ok
@@ -362,7 +393,8 @@ class Matriz{
 			}
 			 	}
 				if(verif2==xb){
-					System.out.println("Esta matriz e IDENTIDADE");	//ok
+					JOptionPane.showMessageDialog(null, "Esta matriz e IDENTIDADE","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+					//System.out.println("Esta matriz e IDENTIDADE");	//ok
 				}
 					//matriz transpota ok
 				int verif3=0;
@@ -376,18 +408,21 @@ class Matriz{
 					}
 				}
 					if(verif3==x*y){
-					System.out.println("Matriz A e a transposta de B"); //ok
+						JOptionPane.showMessageDialog(null, "Matriz A ea Transposta de B","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+						//System.out.println("Matriz A e a transposta de B"); //ok
 			}
 				System.out.println(verif3);
 
 				//elementos simetricos a diagonal principal sao IGUAIS // ok			
 			if(matrizB[0][yb-1]==matrizB[xb-1][0]){
-				System.out.println("Esta matriz e SIMETRICA");
+				JOptionPane.showMessageDialog(null, "Esta matriz e SIMETRICA","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e SIMETRICA");
 			}
 			
 				//elementos simetricos a diagonal principal sao OPOSTOS(4 -4) // ok	
 			if(matrizB[0][yb-1]==matrizB[xb-1][0]*(-1)){
-				System.out.println("Esta matriz e ANTI SIMETRICA");
+				JOptionPane.showMessageDialog(null, "Esta matriz e ANTI SIMETRICA","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e ANTI SIMETRICA");
 			}
 			
 			//matriz quadrada em que TODOS os elementos ABAIXO da diagonal principal sao NULOS
@@ -400,7 +435,8 @@ class Matriz{
 				}
 			}
 			if(verif9==xb){
-				System.out.println("Esta matriz e TRIANGULAR SUPERIOR");
+				JOptionPane.showMessageDialog(null, "Esta matriz e TRIANGULAS SUPERIOR","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e TRIANGULAR SUPERIOR");
 			}
 			
 			//matriz quadrada em que TODOS os elementos ACIMA da diagonal principal sao NULOS //ok
@@ -413,7 +449,8 @@ class Matriz{
 				}
 			}
 			if(verif10==xb){
-				System.out.println("Esta matriz e TRIANGULAR INFERIOR"); //ok
+				JOptionPane.showMessageDialog(null, "Esta matriz e TRINGULAS INFERIOR","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e TRIANGULAR INFERIOR"); //ok
 			}
 			if(xb==x && yb==y){ //ok
 				int verif11=0;
@@ -425,29 +462,35 @@ class Matriz{
 					}
 				}
 				if(verif11==xb*yb){
-					System.out.println("Matriz A e B sao IGUAIS");	//ok
+					JOptionPane.showMessageDialog(null, "Matriz A e E sao IGUAIS","Tipo da Matriz B",JOptionPane.INFORMATION_MESSAGE);
+					//System.out.println("Matriz A e B sao IGUAIS");	//ok
 				}
 			}
 	}
 	
 	void tipoMatriz(){ //ok
 		int sn;
-		System.out.println("Gostaria de saber o tipo de qual matriz?");
-		System.out.println("1 - A");
-		System.out.println("2 - B");
-		sn=op.nextInt();
+		sn= Integer.parseInt(JOptionPane.showInputDialog(null,"Gostaria de saber o tipo de qual matriz? \n 1 - A \n 2 - B","Tipo Matriz",JOptionPane.QUESTION_MESSAGE));
+		//System.out.println("Gostaria de saber o tipo de qual matriz?");
+		//System.out.println("1 - A");
+		//System.out.println("2 - B");
+		//sn=op.nextInt();
 		if(sn==1) {
 		if(x==1){
-			System.out.println("Esta matriz e do tipo: LINHA"); //ok
+			JOptionPane.showMessageDialog(null, "Esta matriz e do tipo: LINHA","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Esta matriz e do tipo: LINHA"); //ok
 		}
 		if(y==1){
-			System.out.println("Esta matriz e do tipo: COLUNA"); //ok
+			JOptionPane.showMessageDialog(null, "Esta matriz e do tipo: COLUNA","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Esta matriz e do tipo: COLUNA"); //ok
 		}
 		if(x==y ){
-			System.out.println("Esta matriz e QUADRADA");	//ok
+			JOptionPane.showMessageDialog(null, "Esta matriz e QUADRADA","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Esta matriz e QUADRADA");	//ok
 		}
 		if(x==0 && y==0){
-			System.out.println("Não é Matriz"); //ok
+			JOptionPane.showMessageDialog(null, "Não é Matriz","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Não é Matriz"); //ok
 		}
 				//elementos nao pertecentes a diagonal principal sao 0 ok.
 			int verif=0;
@@ -459,7 +502,8 @@ class Matriz{
 		}
 		 	}
 			if(x*y-x==verif++){
-				System.out.println("Esta matriz e DIAGONAL");	//ok
+				JOptionPane.showMessageDialog(null, "Esta matriz e DIAGONAL","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e DIAGONAL");	//ok
 			}
 			
 				//elementos diagonal principal = 1  ok
@@ -472,7 +516,8 @@ class Matriz{
 		}
 		 	}
 			if(verif2==x){
-				System.out.println("Esta matriz e IDENTIDADE");	//ok
+				JOptionPane.showMessageDialog(null, "Esta matriz e IDENTIDADE","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Esta matriz e IDENTIDADE");	//ok
 			}
 				//matriz transpota ok
 			int verif3=0;
@@ -485,18 +530,21 @@ class Matriz{
 					}
 				}
 				if(verif3==x*y){
-					System.out.println("Matriz B e a transposta de A"); //ok
+					JOptionPane.showMessageDialog(null, "Matriz B e a Transposta de A","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+					//System.out.println("Matriz B e a transposta de A"); //ok
 			}
 		}
 
 			//elementos simetricos a diagonal principal sao IGUAIS // ok			
 		if(matriz[0][y-1]==matriz[x-1][0]){
-			System.out.println("Esta matriz e SIMETRICA");
+			JOptionPane.showMessageDialog(null, "Esta matriz e SIMETRICA","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Esta matriz e SIMETRICA");
 		}
 		
 			//elementos simetricos a diagonal principal sao OPOSTOS(4 -4) // ok	
 		if(matriz[0][y-1]==matriz[x-1][0]*(-1)){
-			System.out.println("Esta matriz e ANTI SIMETRICA");
+			JOptionPane.showMessageDialog(null, "Esta matriz e ANTI SIMETRICA","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Esta matriz e ANTI SIMETRICA");
 		}
 		
 		//matriz quadrada em que TODOS os elementos ABAIXO da diagonal principal sao NULOS
@@ -509,7 +557,8 @@ class Matriz{
 			}
 		}
 		if(verif9==x){
-			System.out.println("Esta matriz e TRIANGULAR SUPERIOR");
+			JOptionPane.showMessageDialog(null, "Esta matriz e TRIANGULAR SUPERIOR","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Esta matriz e TRIANGULAR SUPERIOR");
 		}
 			}
 		//matriz quadrada em que TODOS os elementos ACIMA da diagonal principal sao NULOS //ok
@@ -522,7 +571,8 @@ class Matriz{
 			}
 		}
 		if(verif10==x){
-			System.out.println("Esta matriz e TRIANGULAR INFERIOR");
+			JOptionPane.showMessageDialog(null, "Esta matriz e TRINGULAR INFERIOR","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Esta matriz e TRIANGULAR INFERIOR");
 		}
 		if(x==xb && y==yb){ //ok
 			int verif11=0;
@@ -534,16 +584,16 @@ class Matriz{
 				}
 			}
 			if(verif11==x*y){
-				System.out.println("Matriz A e B sao IGUAIS");	//ok
+				JOptionPane.showMessageDialog(null, "Matriz A e B sao iguais","Tipo da Matriz A",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Matriz A e B sao IGUAIS");	//ok
 			}						
 		}
-	
 		if(sn==2){
 			tipoMatrizB();
 		}	
 	}
 	
-	void leiFormacao(){ // ok
+	void leiFormacao(){ // ok INSERIR ELEMENTROS GRAFICOS
 		int igual,maior,menor;
 		setMatriz();
 		System.out.println("Quando i=j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
@@ -613,25 +663,29 @@ class Matriz{
 	
 	
 	void verificaLinhasColunas(){	//ok
+
 		if (x==0 || y==0){
-			System.out.println("Número de Linhas/Colunas nao podem ser 0 ");
+			JOptionPane.showMessageDialog(null, "Número de Linhas/Colunas nao podem ser 0");
+			//System.out.println("Número de Linhas/Colunas nao podem ser 0 ");
 			ordemMatriz();
 		}
 	}
 	void verificaLinhasColunasB(){ //ok
 		if (xb==0 || yb==0){
-			System.out.println("Número de Linhas/Colunas nao podem ser 0 ");
+			JOptionPane.showMessageDialog(null,"Número de Linhas/Colunas nao podem ser 0");
+			//System.out.println("Número de Linhas/Colunas nao podem ser 0 ");
 			ordemMatrizB();
 		}
 	}
 	void criarMenu(){	//ok
 		int option=0;
 		menu : while(option==0){
-		System.out.println("Qual teorema deseja utilizar?");
-		System.out.println("1 - Laplace"); //ok
-		System.out.println("2 - Sarrus"); //ok
-		System.out.println("0 - Sair"); //ok
-		option=op.nextInt();
+		option = Integer.parseInt(JOptionPane.showInputDialog(null,"Qual teorema deseja utilizar? \n 1 - Laplace \n 2 - Sarrus"));	
+		//System.out.println("Qual teorema deseja utilizar?");
+		//System.out.println("1 - Laplace"); //ok
+		//System.out.println("2 - Sarrus"); //ok
+		//System.out.println("0 - Sair"); //ok
+		//option=op.nextInt();
 		
 			if(option==1){
 				utilizarLaplace();
@@ -640,11 +694,13 @@ class Matriz{
 				utilizarSarrus();
 		}
 			if(option==0){
-				System.out.println("Programa Encerrado ....");
+				JOptionPane.showInputDialog(null,"Encerrando o Programa!","Aguarde",JOptionPane.INFORMATION_MESSAGE);
+				//System.out.println("Programa Encerrado ....");
 				break menu;
 			}
 			if(option <0 || option>2){
-				System.out.println("Opcao INVALIDA");
+				JOptionPane.showInputDialog(null, "Opção INVÁLIDA!","ERROR",JOptionPane.ERROR_MESSAGE);
+				//System.out.println("Opcao INVALIDA");
 				criarMenu();
 			}
 		}
@@ -681,7 +737,7 @@ class Matriz{
 		}		
 	}
 	
-	void mostrarMatrizResult(){ //ok
+	void mostrarMatrizResult(){ //ok	INSERIR ELEMENTOS GRAFICOS
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
 				System.out.print(matrizresult[i][j]+"\t" );
@@ -691,7 +747,7 @@ class Matriz{
 	
 	}
 	
-	void mostrarMatrizResult(int x,int y){	//ok
+	void mostrarMatrizResult(int x,int y){	//ok	INSERIR ELEMENTOS GRAFICOS
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
 				System.out.print(matrizresult[i][j]+"\t" );
@@ -700,7 +756,7 @@ class Matriz{
 		}
 	}
 	
-	void mostrarMatriz(){ //ok
+	void mostrarMatriz(){ //ok	INSERIR ELEMENTOS GRAFICOS
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
 				System.out.print(matriz[i][j]+"\t" );
@@ -710,7 +766,7 @@ class Matriz{
 
 	}
 	
-	void mostrarMatrizB(){ //ok
+	void mostrarMatrizB(){ //ok	INSERIR ELEMENTOS GRAFICOS
 		for (i = 0; i < xb; i++) {
 			for (j = 0; j < yb; j++) {
 				System.out.print(matrizB[i][j]+"\t" );
@@ -732,10 +788,12 @@ class Matriz{
 			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
 			diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
 			sarrus = diagPrinc - (diagSecond);
-			System.out.println("Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus));
+			JOptionPane.showInputDialog(null,"Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus)+"","Metodo Sarrus",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.println("Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus));
 		}
 		else {
-			System.out.println("Sua matriz deve ser de Ordem 3 para utilizar o metodo de SARRUS! \n");
+			JOptionPane.showInputDialog(null,"Sua matriz deve ser de Ordem 3 para utilizar o metodo de SARRUS! \n","ERROR!",JOptionPane.ERROR_MESSAGE);
+			//System.out.println("Sua matriz deve ser de Ordem 3 para utilizar o metodo de SARRUS! \n");
 			redefinirOrdemMatriz();
 		}
 	}
@@ -880,11 +938,14 @@ public class PC_FMC {
 	public static void main(String args[]) {
 		Matriz mat = new Matriz();
 		//mat.principalMenu();
-		mat.setMatriz();
-		mat.setMatrizB();
-		mat.criarMatriz();
-		mat.criarMatrizB();
-		mat.teste();
+		//mat.ordemMatrizB();
+		//mat.escolhaMatriz();
+		//mat.tipoMatriz();
+		//mat.setMatriz();
+		//mat.setMatrizB();
+		//mat.criarMatriz();
+		//mat.criarMatrizB();
+		//mat.teste();
 		//System.out.println(mat.getX() +" "+ mat.getYB());
 		
 	}
