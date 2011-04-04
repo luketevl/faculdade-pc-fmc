@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 class Matriz{
 	Scanner op = new Scanner(System.in);
-	private int j, i,n,diagPrinc,diagSecond,sarrus,operacoesValor;
+	private int j, i,n,diagPrinc,diagSecond,sarrus;
 	private int x=1,y=2,xb=2,yb=1;
 	private int matriz[][],matrizB[][],matrizresult[][],matrizteste[][];	
 
@@ -94,15 +94,16 @@ class Matriz{
 	
 	void operacoesMatriz(){ //falta determinar INVERSA e MULTIPLICAR pela MATRIZ B
 		int operacoesMatriz;
-		System.out.println("Oque deseja fazer com as duas matrizes?");
-		System.out.println("1 - Somar"); //ok
-		System.out.println("2 - Subtrair"); //ok
-		System.out.println("3 - Multiplicar"); //calculos para 2x2 2x3 2x4 ok
-		System.out.println("4 - Verificar o tipo da matriz"); //ok
-		System.out.println("5 - Determinar a inversa"); 
-		System.out.println("0 - Sair"); //ok
-		operacoesMatriz=op.nextInt();
-		
+		operacoesMatriz=Integer.parseInt(JOptionPane.showInputDialog(null,"Oque deseja fazer com as duas matrizes? \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Verificar o tipo da matriz \n 5 - Determinar a inversa","Operações com Matriz",JOptionPane.DEFAULT_OPTION));
+//		System.out.println("Oque deseja fazer com as duas matrizes?");
+//		System.out.println("1 - Somar"); //ok
+//		System.out.println("2 - Subtrair"); //ok
+//		System.out.println("3 - Multiplicar"); //calculos para 2x2 2x3 2x4 ok
+//		System.out.println("4 - Verificar o tipo da matriz"); //ok
+//		System.out.println("5 - Determinar a inversa"); 
+//		System.out.println("0 - Sair"); //ok
+//		operacoesMatriz=op.nextInt();
+
 		operacoesMatrizValidacao : switch(operacoesMatriz){
 		case(0):
 			break operacoesMatrizValidacao;
@@ -110,7 +111,8 @@ class Matriz{
 			int oposto = 0;
 			//matriz oposto quando o produto da 0
 			if(x!=xb || y!=yb){
-			System.out.println("Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM");	//ok	
+			JOptionPane.showMessageDialog(null,"Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM","ERRO!",JOptionPane.ERROR_MESSAGE);
+			//System.out.println("Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM");	//ok	
 			operacoesMatriz();
 			}	
 			else {
@@ -123,7 +125,8 @@ class Matriz{
 								if(matriz[i][j]==0){
 									oposto++;
 										if(oposto==(x*y)){
-											System.out.println("A matriz A,B é oposto.");	//ok
+											JOptionPane.showMessageDialog(null,"A matriz A,B é oposto.","AVISO!",JOptionPane.INFORMATION_MESSAGE);
+											//System.out.println("A matriz A,B é oposto.");	//ok
 								}
 							}
 						}
@@ -135,7 +138,8 @@ class Matriz{
 			break;
 		case(2):	// ok
 			if(x!=xb || y!=yb){
-				System.out.println("Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM");
+				JOptionPane.showMessageDialog(null,"Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM","ERROR!",JOptionPane.ERROR_MESSAGE);
+				//System.out.println("Nao foi possivel fazer a operacao: A duas matrizes devem ser de mesma ORDEM");
 				operacoesMatriz();
 				}	
 				else {
@@ -154,22 +158,26 @@ class Matriz{
 			break;
 		case(3):
 			int multiplicar;
-			System.out.println("4 - Multiplicar por um número REAL");	//ok
-			System.out.println("5 - Multiplicar pela matriz B");
-			multiplicar=op.nextInt();
-			
+			multiplicar=Integer.parseInt(JOptionPane.showInputDialog(null," 4 - Multiplicar por um número REAL \n 5 - Multiplicar pela matriz B ","Propriedades",JOptionPane.QUESTION_MESSAGE));
+//			System.out.println("4 - Multiplicar por um número REAL");	//ok
+//			System.out.println("5 - Multiplicar pela matriz B");
+//			multiplicar=op.nextInt();
+
 			int ab = 0;
 				if(multiplicar==4){	//ok
-					System.out.println("Informe o valor no qual a matriz sera multiplicada");
-					multiplicar=op.nextInt();
-					System.out.println("Multiplicar a Matriz A ou B?");
-					System.out.println("1 - A");
-					System.out.println("2 - B");
-					ab=op.nextInt();
+					multiplicar=Integer.parseInt(JOptionPane.showInputDialog(null,"Informe o valor no qual a matriz sera multiplicada \n ","AVISO",JOptionPane.INFORMATION_MESSAGE));
+//					System.out.println("Informe o valor no qual a matriz sera multiplicada");
+//					multiplicar=op.nextInt();
+					ab=Integer.parseInt(JOptionPane.showInputDialog(null,"Multiplicar a Matriz A ou B? \n 1 - A \n 2 - B","Escolha a matriz",JOptionPane.INFORMATION_MESSAGE));
+//					System.out.println("Multiplicar a Matriz A ou B?");
+//					System.out.println("1 - A");
+//					System.out.println("2 - B");
+//					ab=op.nextInt();
 				}
 						if(ab==1){	//ok
 							setMatrizResult();
-							System.out.println("O valor da sua matriz e:");
+							JOptionPane.showMessageDialog(null,"O valor da sua matriz e:","Resultado",JOptionPane.DEFAULT_OPTION);
+//							System.out.println("O valor da sua matriz e:");
 								for(i=0;i<x;i++){
 									for(j=0;j<y;j++){
 										matrizresult[i][j]=matriz[i][j]*multiplicar;
@@ -180,7 +188,8 @@ class Matriz{
 			}	
 						if(ab==2){	//ok
 							setMatrizResult();
-							System.out.println("O valor da sua matriz e:");
+							JOptionPane.showMessageDialog(null,"O valor da sua matriz e:","Resultado",JOptionPane.DEFAULT_OPTION);
+//							System.out.println("O valor da sua matriz e:");
 							for(i=0;i<xb;i++){
 								for(j=0;j<yb;j++){
 									matrizresult[i][j]=matrizB[i][j]*multiplicar;
@@ -292,7 +301,8 @@ class Matriz{
 			
 			}
 			if(multiplicar==5 && y!=xb){	//ok
-				System.out.println("O numero de COLUNAS de A nao e igual o numero de LINHAS de B!");
+				JOptionPane.showMessageDialog(null,"O numero de COLUNAS de A nao e igual o numero de LINHAS de B!","AVISO!",JOptionPane.PLAIN_MESSAGE);
+//				System.out.println("O numero de COLUNAS de A nao e igual o numero de LINHAS de B!");
 				operacoesMatriz();
 			}	
 			break;
@@ -301,10 +311,11 @@ class Matriz{
 			break;
 		// A ser FEITO
 		case(5):
-			System.out.println("Qual matriz deseja saber a Inversa?");
-			System.out.println("1 - A");
-			System.out.println("2 - B");
-			int temp =op.nextInt();
+			int temp = Integer.parseInt(JOptionPane.showInputDialog(null,"Qual matriz deseja saber a Inversa? \n 1 - A \n 2 - B","Escolha matriz",JOptionPane.INFORMATION_MESSAGE));
+//			System.out.println("Qual matriz deseja saber a Inversa?");
+//			System.out.println("1 - A");
+//			System.out.println("2 - B");
+//			int temp =op.nextInt();
 	}
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -325,6 +336,7 @@ class Matriz{
 		case(1):{ //ok
 			ordemMatriz();
 			ordemMatrizB();
+			criarMatriz();
 			criarMatrizB();
 			operacoesMatriz();
 			break;
@@ -596,12 +608,15 @@ class Matriz{
 	void leiFormacao(){ // ok INSERIR ELEMENTROS GRAFICOS
 		int igual,maior,menor;
 		setMatriz();
-		System.out.println("Quando i=j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
-		igual=op.nextInt();
-		System.out.println("Quando i>j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
-		maior=op.nextInt();
-		System.out.println("Quando i<j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
-		menor=op.nextInt();
+		igual=Integer.parseInt(JOptionPane.showInputDialog(null,"Quando i=j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar","Lei de Formação",JOptionPane.DEFAULT_OPTION));
+//		System.out.println("Quando i=j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
+//		igual=op.nextInt();
+		maior=Integer.parseInt(JOptionPane.showInputDialog(null,"Quando i=j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar","Lei de Formação",JOptionPane.DEFAULT_OPTION));
+//		System.out.println("Quando i>j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
+//		maior=op.nextInt();
+		menor=Integer.parseInt(JOptionPane.showInputDialog(null,"Quando i=j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar","Lei de Formação",JOptionPane.DEFAULT_OPTION));
+//		System.out.println("Quando i<j \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Dividir \n 5 - Elevar");
+//		menor=op.nextInt();
 		
 		for(i=0;i<x;i++){	
 			for(j=0;j<y;j++){
@@ -718,8 +733,9 @@ class Matriz{
 	void criarMatriz(){ //ok
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
-				System.out.print("a"+(i+1)+""+(j+1)+":  ");
-				n = op.nextInt();
+				n=Integer.parseInt(JOptionPane.showInputDialog(null,"a"+(i+1)+""+(j+1)+"","Elementos da matriz A",JOptionPane.PLAIN_MESSAGE));
+				//System.out.print("a"+(i+1)+""+(j+1)+":  ");
+				//n = op.nextInt();
 				matriz[i][j] = n;
 			}
 		}
@@ -730,8 +746,9 @@ class Matriz{
 		int n;
 		for (i = 0; i < xb; i++) {
 			for (j = 0; j < yb; j++) {
-				System.out.print("b"+(i+1)+""+(j+1)+":  ");
-				n = op.nextInt();
+				n=Integer.parseInt(JOptionPane.showInputDialog(null,"b"+(i+1)+""+(j+1)+"","Elementos da matriz B",JOptionPane.PLAIN_MESSAGE));
+				//System.out.print("b"+(i+1)+""+(j+1)+":  ");
+				//n = op.nextInt();
 				matrizB[i][j] = n;
 			}
 		}		
@@ -788,11 +805,11 @@ class Matriz{
 			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
 			diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
 			sarrus = diagPrinc - (diagSecond);
-			JOptionPane.showInputDialog(null,"Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus)+"","Metodo Sarrus",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus)+"","Metodo Sarrus",JOptionPane.INFORMATION_MESSAGE);
 			//System.out.println("Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus));
 		}
 		else {
-			JOptionPane.showInputDialog(null,"Sua matriz deve ser de Ordem 3 para utilizar o metodo de SARRUS! \n","ERROR!",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Sua matriz deve ser de Ordem 3 para utilizar o metodo de SARRUS! \n","ERROR!",JOptionPane.ERROR_MESSAGE);
 			//System.out.println("Sua matriz deve ser de Ordem 3 para utilizar o metodo de SARRUS! \n");
 			redefinirOrdemMatriz();
 		}
@@ -807,7 +824,8 @@ class Matriz{
 					c=matriz[1][0]* Math.pow((-1),(2+1)) * (matriz[0][1]*matriz[2][2] - matriz[0][2]*matriz[2][1]);
 					b=matriz[2][0]* Math.pow((-1),(3+1))* (matriz[0][1]*matriz[1][2] - matriz[0][2]*matriz[1][1]) ;
 					result= detA+c+b;
-					System.out.print("Utilizando LAPLACE o resultado é: "+ NumberFormat.getIntegerInstance().format(result));
+					JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+ NumberFormat.getIntegerInstance().format(result)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
+					//System.out.print("Utilizando LAPLACE o resultado é: "+ NumberFormat.getIntegerInstance().format(result));
 		}
 				if(x==4 && y==4){
 				 // Calculo TO DO UTILIZANDO a PRIMEIRA COLUNA.
@@ -839,12 +857,14 @@ class Matriz{
 					int diagPrinc4 = diagPrinc - (diagSecond);
 					d=matriz[3][3]* Math.pow((-1),(4+4))* (diagPrinc4) ;
 					double total=detA+(c)+(b)+(d);
-					System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total));
+					JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
+					//System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total));
 				
 			}
 	} 
-		if(x!=3 || x!=4 && y!=3 || y!=4){
-		System.out.println("Para utilizar LAPLACE a matriz deve ser QUADRADA Ordem 3 ou 4\n");
+		if(x!=3 && x!=4 || y!=3 && y!=4){
+			JOptionPane.showMessageDialog(null,"Para utilizar LAPLACE a matriz deve ser QUADRADA Ordem 3 ou 4","ERRO!",JOptionPane.ERROR_MESSAGE);
+			//System.out.println("Para utilizar LAPLACE a matriz deve ser QUADRADA Ordem 3 ou 4\n");
 		redefinirOrdemMatriz();
 	}
 		
@@ -937,7 +957,7 @@ public class PC_FMC {
 
 	public static void main(String args[]) {
 		Matriz mat = new Matriz();
-		//mat.principalMenu();
+		mat.principalMenu();
 		//mat.ordemMatrizB();
 		//mat.escolhaMatriz();
 		//mat.tipoMatriz();
