@@ -34,14 +34,35 @@ public class TESTE {
 		}
 		System.out.println(matriz[x-1][y-1] + " FDP " + matriz[x-1][0]);
 		*/
-		JOptionPane.showConfirmDialog(null," message","rere",JOptionPane.YES_NO_OPTION);
-		int x=0;
-		if(x==0){
-			System.out.println("UI");
-		}
-		else if(x==0 || x==1){
-			System.out.println("OIE");
-		}
+//		JOptionPane.showInputDialog(null," message","rere",JOptionPane.YES_NO_OPTION);
+//		int x=0;
+//		if(x==0){
+//			System.out.println("UI");
+//		}
+//		else if(x==0 || x==1){
+//			System.out.println("OIE");
+//		}
+		
+		
+		JOptionPane.showInputDialog(null,"rere","A",JOptionPane.CANCEL_OPTION);
+		JOptionPane.showInputDialog(null,"rere","B",JOptionPane.CLOSED_OPTION);
+		JOptionPane.showInputDialog(null,"rere","C",JOptionPane.DEFAULT_OPTION);
+		JOptionPane.showInputDialog(null,"rere","D",JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showInputDialog(null,"rere","E",JOptionPane.NO_OPTION);
+		JOptionPane.showInputDialog(null,"rere","F",JOptionPane.OK_CANCEL_OPTION);
+		JOptionPane.showInputDialog(null,"rere","G",JOptionPane.OK_OPTION);
+		JOptionPane.showInputDialog(null,"rere","H",JOptionPane.PLAIN_MESSAGE);
+		//JOptionPane.showInputDialog(null,"rere","I",JOptionPane.QUESTION_MESSAGE);
+//		JOptionPane.showInputDialog(null,"rere","",JOptionPane.SELECTION_VALUES_PROPERTY("D"));
+		JOptionPane.showInputDialog(null,"rere","J",JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showInputDialog(null,"rere","K",JOptionPane.YES_NO_CANCEL_OPTION);
+		JOptionPane.showInputDialog(null,"rere","L",JOptionPane.YES_NO_OPTION);
+		JOptionPane.showInputDialog(null,"rere","M",JOptionPane.YES_OPTION);
+		JOptionPane.showInputDialog(null,"rere","N",JOptionPane.ERROR);
+		JOptionPane.showInputDialog(null,"rere","O",JOptionPane.ABORT);
+		
+	
+		
 	}
 
 }

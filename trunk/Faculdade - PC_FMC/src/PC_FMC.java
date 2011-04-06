@@ -39,7 +39,7 @@ class Matriz{
 	
 	void redefinirOrdemMatriz(){ // ok
 		int redf;
-		redf=JOptionPane.showConfirmDialog(null,"Deseja Redefinir a ordem de sua Matriz?","Selecione uma opção",JOptionPane.INFORMATION_MESSAGE);
+		redf=JOptionPane.showConfirmDialog(null,"Deseja Redefinir a ordem de sua Matriz?","Selecione uma opção",JOptionPane.YES_NO_OPTION);
 	//	System.out.println("Deseja Redefinir a ordem de sua Matriz?");
 	//	System.out.println("1 - Sim");
 	//	System.out.println("2 - Nao");
@@ -59,10 +59,10 @@ class Matriz{
 	
 	void ordemMatriz(){		//ok
 		try{
-		x= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de linhas de A","Matriz A",JOptionPane.INFORMATION_MESSAGE));
+		x= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de linhas de A","Matriz A",JOptionPane.NO_OPTION));
 		//System.out.print("Digite o numero de linhas de A: ");
 		//x=op.nextInt();	
-		y = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de colunas de A","Matriz A",JOptionPane.INFORMATION_MESSAGE));
+		y = Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de colunas de A","Matriz A",JOptionPane.NO_OPTION));
 		//System.out.print("Digite o numero de colunas de A:  ");
 		//y=op.nextInt();
 		verificaLinhasColunas();
@@ -75,10 +75,10 @@ class Matriz{
 	void ordemMatrizB(){	//ok
 		//ordemMatriz();
 		try{
-		xb= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de linhas de B","Matriz B",JOptionPane.INFORMATION_MESSAGE));
+		xb= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de linhas de B","Matriz B",JOptionPane.NO_OPTION));
 		//System.out.print("Digite o número de linhas de B: ");
 		//xb=op.nextInt();
-		yb= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de colunas de B","Matriz B",JOptionPane.INFORMATION_MESSAGE));
+		yb= Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o numero de colunas de B","Matriz B",JOptionPane.NO_OPTION));
 		//System.out.print("Digite o numero de colunas de B: ");
 		//yb=op.nextInt();
 		verificaLinhasColunasB();
@@ -92,7 +92,7 @@ class Matriz{
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void operacoesMatriz(){ //falta determinar INVERSA e MULTIPLICAR pela MATRIZ B
 		int operacoesMatriz;
-		operacoesMatriz=Integer.parseInt(JOptionPane.showInputDialog(null,"Oque deseja fazer com as duas matrizes? \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Verificar o tipo da matriz \n 5 - Determinar a inversa","Operações com Matriz",JOptionPane.DEFAULT_OPTION));
+		operacoesMatriz=Integer.parseInt(JOptionPane.showInputDialog(null,"Oque deseja fazer com as duas matrizes? \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Verificar o tipo da matriz \n 5 - Determinar a inversa","Operações com Matriz",JOptionPane.QUESTION_MESSAGE));
 //		System.out.println("Oque deseja fazer com as duas matrizes?");
 //		System.out.println("1 - Somar"); //ok
 //		System.out.println("2 - Subtrair"); //ok
@@ -163,10 +163,10 @@ class Matriz{
 
 			int ab = 0;
 				if(multiplicar==4){	//ok
-					multiplicar=Integer.parseInt(JOptionPane.showInputDialog(null,"Informe o valor no qual a matriz sera multiplicada \n ","AVISO",JOptionPane.INFORMATION_MESSAGE));
+					multiplicar=Integer.parseInt(JOptionPane.showInputDialog(null,"Informe o valor no qual a matriz sera multiplicada \n ","AVISO",JOptionPane.PLAIN_MESSAGE));
 //					System.out.println("Informe o valor no qual a matriz sera multiplicada");
 //					multiplicar=op.nextInt();
-					ab=Integer.parseInt(JOptionPane.showInputDialog(null,"Multiplicar a Matriz A ou B? \n 1 - A \n 2 - B","Escolha a matriz",JOptionPane.INFORMATION_MESSAGE));
+					ab=Integer.parseInt(JOptionPane.showInputDialog(null,"Multiplicar a Matriz A ou B? \n 1 - A \n 2 - B","Escolha a matriz",JOptionPane.QUESTION_MESSAGE));
 //					System.out.println("Multiplicar a Matriz A ou B?");
 //					System.out.println("1 - A");
 //					System.out.println("2 - B");
@@ -299,7 +299,7 @@ class Matriz{
 			
 			}
 			if(multiplicar==5 && y!=xb){	//ok
-				JOptionPane.showMessageDialog(null,"O numero de COLUNAS de A nao e igual o numero de LINHAS de B!","AVISO!",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null,"O numero de COLUNAS de A nao e igual o numero de LINHAS de B!","AVISO!",JOptionPane.WARNING_MESSAGE);
 //				System.out.println("O numero de COLUNAS de A nao e igual o numero de LINHAS de B!");
 				operacoesMatriz();
 			}	
@@ -957,13 +957,13 @@ public class PC_FMC {
 	public static void main(String args[]) {
 		Matriz mat = new Matriz();
 		mat.principalMenu();
-		//mat.ordemMatrizB();
-		//mat.escolhaMatriz();
-		//mat.tipoMatriz();
-		//mat.setMatriz();
-		//mat.setMatrizB();
-		//mat.criarMatriz();
-		//mat.criarMatrizB();
+//		mat.ordemMatrizB();
+//		mat.escolhaMatriz();
+//		mat.tipoMatriz();
+//		mat.setMatriz();
+//		mat.setMatrizB();
+//		mat.criarMatriz();
+//		mat.criarMatrizB();
 		//mat.teste();
 		//System.out.println(mat.getX() +" "+ mat.getYB());
 		
