@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
@@ -33,6 +34,7 @@ public class TESTE {
 		}
 		System.out.println(matriz[x-1][y-1] + " FDP " + matriz[x-1][0]);
 		*/
+		JOptionPane.showConfirmDialog(null," message","rere",JOptionPane.YES_NO_OPTION);
 		int x=0;
 		if(x==0){
 			System.out.println("UI");
