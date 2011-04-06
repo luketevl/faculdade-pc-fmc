@@ -89,9 +89,7 @@ class Matriz{
 		}
 	}
 
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-	
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void operacoesMatriz(){ //falta determinar INVERSA e MULTIPLICAR pela MATRIZ B
 		int operacoesMatriz;
 		operacoesMatriz=Integer.parseInt(JOptionPane.showInputDialog(null,"Oque deseja fazer com as duas matrizes? \n 1 - Somar \n 2 - Subtrair \n 3 - Multiplicar \n 4 - Verificar o tipo da matriz \n 5 - Determinar a inversa","Operações com Matriz",JOptionPane.DEFAULT_OPTION));
@@ -776,6 +774,7 @@ class Matriz{
 	void mostrarMatriz(){ //ok	INSERIR ELEMENTOS GRAFICOS
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
+				//JOptionPane.showMessageDialog(null,""+matriz[i][j]+"\t","Matriz A",JOptionPane.DEFAULT_OPTION);
 				System.out.print(matriz[i][j]+"\t" );
 				}
 			System.out.println("");
