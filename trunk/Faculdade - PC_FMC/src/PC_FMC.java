@@ -756,7 +756,7 @@ class Matriz{
 		String tst="";
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
-				tst+=matriz[i][j]+"       ";
+				tst+=matriz[i][j]+"           ";
 				//System.out.print(matrizresult[i][j]+"\t" );
 				}
 			tst+="\n";
@@ -778,7 +778,7 @@ class Matriz{
 		String matrizResult="";
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
-				matrizResult+=matrizresult[i][j]+"       ";
+				matrizResult+=matrizresult[i][j]+"           ";
 				//System.out.print(matrizresult[i][j]+"\t" );
 				}
 			matrizResult+="\n";
@@ -791,7 +791,7 @@ class Matriz{
 		String mostrarMatriz="";
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
-				mostrarMatriz+=matriz[i][j]+"       ";
+				mostrarMatriz+=matriz[i][j]+"           ";
 				//System.out.print(matriz[i][j]+"\t" );
 				}
 			mostrarMatriz+="\n";
@@ -803,7 +803,7 @@ class Matriz{
 		String mostrarMatrizB="";
 		for (i = 0; i < xb; i++) {
 			for (j = 0; j < yb; j++) {
-				mostrarMatrizB+=matrizB[i][j]+"       ";
+				mostrarMatrizB+=matrizB[i][j]+"           ";
 				//System.out.print(matriz[i][j]+"\t" );
 				}
 			mostrarMatrizB+="\n";
