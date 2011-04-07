@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 class Matriz{
 	Scanner op = new Scanner(System.in);
 	private int j, i,n,diagPrinc,diagSecond,sarrus;
-	private int x=1,y=2,xb=2,yb=1;
+	private int x=3,y=3,xb=2,yb=1;
 	private int matriz[][],matrizB[][],matrizresult[][],matrizteste[][];	
 
 	void principalMenu(){	//ok
@@ -26,7 +26,7 @@ class Matriz{
 		case(2):
 			ordemMatriz();
 			criarMatriz();
-			mostrarMatriz();
+			//mostrarMatriz();
 			criarMenu();
 			break;
 		}
@@ -752,7 +752,19 @@ class Matriz{
 		}		
 	}
 	
-	void mostrarMatrizResult(){ //ok	INSERIR ELEMENTOS GRAFICOS
+	void mostrarMatrizResult(){	//ok ELEMENTOS GRAFICOS
+		String tst="";
+		for (i = 0; i < x; i++) {
+			for (j = 0; j < y; j++) {
+				tst+=matriz[i][j]+"       ";
+				//System.out.print(matrizresult[i][j]+"\t" );
+				}
+			tst+="\n";
+		}
+		JOptionPane.showMessageDialog(null,tst,"Matriz Resultante",JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	void mostrarMatrizResultString(){ //deprecated
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
 				System.out.print(matrizresult[i][j]+"\t" );
@@ -762,34 +774,41 @@ class Matriz{
 	
 	}
 	
-	void mostrarMatrizResult(int x,int y){	//ok	INSERIR ELEMENTOS GRAFICOS
+	void mostrarMatrizResult(int x,int y){	//ok	ELEMENTOS GRAFICOS
+		String matrizResult="";
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
-				System.out.print(matrizresult[i][j]+"\t" );
+				matrizResult+=matrizresult[i][j]+"       ";
+				//System.out.print(matrizresult[i][j]+"\t" );
 				}
-			System.out.println("");
+			matrizResult+="\n";
+			//System.out.println("");
 		}
+		JOptionPane.showMessageDialog(null,matrizResult,"Matriz Resultante",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	void mostrarMatriz(){ //ok	INSERIR ELEMENTOS GRAFICOS
+	void mostrarMatriz(){ //ok	ELEMENTOS GRAFICOS
+		String mostrarMatriz="";
 		for (i = 0; i < x; i++) {
 			for (j = 0; j < y; j++) {
-				//JOptionPane.showMessageDialog(null,""+matriz[i][j]+"\t","Matriz A",JOptionPane.DEFAULT_OPTION);
-				System.out.print(matriz[i][j]+"\t" );
+				mostrarMatriz+=matriz[i][j]+"       ";
+				//System.out.print(matriz[i][j]+"\t" );
 				}
-			System.out.println("");
+			mostrarMatriz+="\n";
 		}
-
+		JOptionPane.showMessageDialog(null,mostrarMatriz,"Matriz Resultante A",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	void mostrarMatrizB(){ //ok	INSERIR ELEMENTOS GRAFICOS
+	void mostrarMatrizB(){ //ok	ELEMENTOS GRAFICOS
+		String mostrarMatrizB="";
 		for (i = 0; i < xb; i++) {
 			for (j = 0; j < yb; j++) {
-				System.out.print(matrizB[i][j]+"\t" );
+				mostrarMatrizB+=matrizB[i][j]+"       ";
+				//System.out.print(matriz[i][j]+"\t" );
 				}
-			System.out.println(""); 
+			mostrarMatrizB+="\n";
 		}
-		
+		JOptionPane.showMessageDialog(null,mostrarMatrizB,"Matriz Resultante B",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	void verificarMatriz(){ //deprecated
