@@ -141,13 +141,13 @@ class Matriz{
 			mostrarMatrizResult();
 			}	
 					else if(ab==2){	//ok
-							setMatrizResult();
+							
 							for(i=0;i<xb;i++){
 								for(j=0;j<yb;j++){
-									matrizresult[i][j]=matrizB[i][j]*multiplicar;
+									matrizB[i][j]=matrizB[i][j]*multiplicar;
 						}
 					}
-			mostrarMatrizResult();
+			mostrarMatrizB();
 		}		
 	
 			if(multiplicar==5 && y==xb){ // fazer calculos
