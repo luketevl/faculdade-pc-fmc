@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.text.NumberFormat;
 public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
@@ -60,37 +61,40 @@ public class TESTE {
 //		JOptionPane.showInputDialog(null,"rere","M",JOptionPane.YES_OPTION);
 //		JOptionPane.showInputDialog(null,"rere","N",JOptionPane.ERROR);
 //		JOptionPane.showInputDialog(null,"rere","O",JOptionPane.ABORT);
-		int x=2,y=2;
+		double x=0.02,y=2;
 		String nome[][],tst="",exib="";
-		nome=new String[x][y];
-		for(int ib=0;ib<x;ib++){
-			for(int jb=0;jb<y;jb++){
-				tst=JOptionPane.showInputDialog(null,"Digite","RE",JOptionPane.ERROR_MESSAGE);
-				//tst+=nome[ib][jb];
-				
-				nome[ib][jb]= tst;
-			}
-		}
+		//nome=new String[x][y];
+//		for(int ib=0;ib<x;ib++){
+//			for(int jb=0;jb<y;jb++){
+//				tst=JOptionPane.showInputDialog(null,"Digite","RE",JOptionPane.ERROR_MESSAGE);
+//				//tst+=nome[ib][jb];
+//				
+//				nome[ib][jb]= tst;
+//			}
+//		}
+//		
+//		for(int ib=0;ib<x;ib++){
+//			for(int jb=0;jb<y;jb++){
+//				exib+=nome[ib][jb]+"        ";
+//				System.out.print(nome[ib][jb]);
+//			}
+//			//System.out.println("\n\n\n\n\n\n");
+//			exib+="\n";
+//			System.out.println(exib);
+//		}
+//		/*for(int i=0;i<x;i++){
+//			tst +="LU";
+//			for(int j=0;j<y;j++){
+//				tst+= "CAS ";
+//			}
+//			
+//		}*/
+//		JOptionPane.showMessageDialog(null,exib,"ui",JOptionPane.INFORMATION_MESSAGE);
+//		JOptionPane.showMessageDialog(null,tst,"ui",JOptionPane.INFORMATION_MESSAGE);
+//		
+//		System.out.println(Math.pow(x,10));
 		
-		for(int ib=0;ib<x;ib++){
-			for(int jb=0;jb<y;jb++){
-				exib+=nome[ib][jb]+"        ";
-				System.out.print(nome[ib][jb]);
-			}
-			//System.out.println("\n\n\n\n\n\n");
-			exib+="\n";
-			System.out.println(exib);
+		System.out.println(NumberFormat.getPercentInstance().format(x));
 		}
-		/*for(int i=0;i<x;i++){
-			tst +="LU";
-			for(int j=0;j<y;j++){
-				tst+= "CAS ";
-			}
-			
-		}*/
-		JOptionPane.showMessageDialog(null,exib,"ui",JOptionPane.INFORMATION_MESSAGE);
-		JOptionPane.showMessageDialog(null,tst,"ui",JOptionPane.INFORMATION_MESSAGE);
-		
-	}
 
 }
