@@ -1,8 +1,11 @@
+
 import java.util.Scanner;
 import java.text.NumberFormat;
 import javax.swing.JOptionPane;
 
+	
 class Matriz{
+	
 	Scanner op = new Scanner(System.in);
 	private int j, i,n,diagPrinc,diagSecond,sarrus;
 	private int x,y,xb,yb;
