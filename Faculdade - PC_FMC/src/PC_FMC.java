@@ -798,11 +798,15 @@ class Matriz{
 		return yb;
 	}
 	
-	void getYB(int YB){//ok
+	void setYB(int YB){//ok
 		this.yb=YB;
 	}
-	void getXB(int XB){//ok
+	void setXB(int XB){//ok
 		this.xb=XB;
+	}
+	
+	public int getSarrus(){
+		return sarrus;
 	}
 	
 	void setMatriz(){//ok

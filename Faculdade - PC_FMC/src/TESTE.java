@@ -5,6 +5,11 @@ import java.io.ObjectInputStream.GetField;
 import java.text.NumberFormat;
 
 class Gauss extends Matriz{
+	String ik[][];
+	String cramer[][]=new String[2][2];
+	String cramer2;
+	int cramerResult;
+	
 	void teste(){
 //		/*int x;
 //		for(x=0;x<20;x++){
@@ -97,14 +102,36 @@ class Gauss extends Matriz{
 //		
 //		
 //		System.out.println(NumberFormat.getPercentInstance().format(x));
+//		String x="nada";
+//		x=JOptionPane.showInputDialog(null,"x");
+//		System.out.println(x);
+//		if(x.equals("")){
+//			System.out.println("Trui");
+//		}
 		
 	}
 	@Override
 	public int getX() {
+
 	
 		return super.getX();
 	}
-
+	
+	void removeVariavel(String cramer[][],int i, int j){
+		cramer[i][j]=cramer[i][j].replace('x','a');
+	}
+	void utilizarCramer(){
+			
+		utilizarSarrus();
+		for(int i=0;i<2;i++){
+			for(int j=0;j<2;j++){
+				cramer[j][i]=cramer[2-1][2-1];
+			}
+			utilizarSarrus();
+			cramerResult= getSarrus();
+		}
+		
+	}
 
 }
 
@@ -112,8 +139,17 @@ public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
 		Gauss ga=new Gauss();
-		System.out.println(ga.getX());
-
+		
+		
+		for(int i=0;i<2;i++){
+			for(int j=0;j<2;j++){
+				System.out.println("Digite:  ");
+				ga.cramer[i][j]=op.next();
+				ga.cramer2=ga.cramer[i][j];
+				ga.removeVariavel(ga.cramer, i, j);
+			}
+			
 		}
 
+}
 }
