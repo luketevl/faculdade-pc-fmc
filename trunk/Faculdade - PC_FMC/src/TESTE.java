@@ -132,6 +132,31 @@ class Gauss extends Matriz{
 //		
 
 		
+//		ArrayList<ArrayList> arrayList=new ArrayList();
+//		ArrayList<String> arrayListI=new ArrayList();
+//		ArrayList<String> arrayListJ=new ArrayList();
+//		
+//		
+//		ga.ordemMatriz();
+//		
+//		
+//			for(int i=0;i<ga.getX();i++){
+//				arrayListI.add(JOptionPane.showInputDialog(null,"A:" ));
+//				arrayListJ.add(JOptionPane.showInputDialog(null,"B:" ));
+//		}
+//		
+//
+//			for(int j=0;j<arrayListI.size();j++){
+//				System.out.println("\n");
+//				for(int i=0;i<arrayListI.size();i++){
+//				System.out.print(arrayListI.get(i)+" ");
+//			
+//			}
+//			
+//			System.out.print(arrayListJ.get(j)+" ");
+//		}
+		
+		
 	}
 	
 	
@@ -157,30 +182,33 @@ public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
 		Gauss ga=new Gauss();
-		ArrayList<ArrayList> arrayList=new ArrayList();
-		ArrayList<String> arrayListI=new ArrayList();
-		ArrayList<String> arrayListJ=new ArrayList();
 		
 		
-		ga.ordemMatriz();
-		
-		
-			for(int i=0;i<ga.getX();i++){
-				arrayListI.add(JOptionPane.showInputDialog(null,"A:" ));
-				arrayListJ.add(JOptionPane.showInputDialog(null,"B:" ));
+		ArrayList<ArrayList<String>> listaPrincipal=new ArrayList<ArrayList<String>>();
+		ArrayList<String> lista1=new ArrayList<String>();
+		ArrayList<String> lista2=new ArrayList<String>();
+		for(int i=0;i<10;i++){
+		lista1.add(""+i);
 		}
+		for(int i=11;i<20;i++){
+		lista2.add(""+i);
+		}
+		listaPrincipal.add(lista1);
+		listaPrincipal.add(lista2);
+		// Percorre a lista principal pegando todos as lista
+		for(int i=0;i<listaPrincipal.size();i++){
+		ArrayList<String> aux=listaPrincipal.get(i);
+		for(int j=0;j<aux.size();j++){
+		System.out.println("ListaPrincipal["+i+"]["+j+"] = "+aux.get(j));
+		}
+		System.out.println("==================QUEBRA DE LISTA=============================");
+		}
+
+		
+		
+		
 		
 
-			for(int j=0;j<arrayListI.size();j++){
-				System.out.println("\n");
-				for(int i=0;i<arrayListI.size();i++){
-				System.out.print(arrayListI.get(i)+" ");
-			
-			}
-			
-			System.out.print(arrayListJ.get(j)+" ");
-		}
-		
 		
 		}
 }
