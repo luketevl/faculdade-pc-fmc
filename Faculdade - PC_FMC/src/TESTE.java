@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 import java.io.ObjectInputStream.GetField;
 import java.text.NumberFormat;
@@ -109,13 +110,30 @@ class Gauss extends Matriz{
 //			System.out.println("Trui");
 //		}
 		
-	}
-	@Override
-	public int getX() {
+		//		
+//		for(int i=0;i<2;i++){
+//			for(int j=0;j<2;j++){
+//				System.out.println("Digite:  ");
+//				ga.cramer[i][j]=op.next();
+//				ga.cramer2=ga.cramer[i][j];
+//				ga.removeVariavel(ga.cramer, i, j);
+//			}
+//			
+//		}
 
-	
-		return super.getX();
+		//		
+//		Gauss ga=new Gauss();
+//		arrayList2.add("Teste");
+//		arrayList2.add("Teste2");
+//		arrayList2.add("Teste3");
+//		arrayList2.add("Teste4");
+//		arrayList.add(arrayList2);
+//		arrayList.add(arrayList2);
+//		
+
+		
 	}
+	
 	
 	void removeVariavel(String cramer[][],int i, int j){
 		cramer[i][j]=cramer[i][j].replace('x','a');
@@ -139,17 +157,30 @@ public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
 		Gauss ga=new Gauss();
+		ArrayList<ArrayList> arrayList=new ArrayList();
+		ArrayList<String> arrayListI=new ArrayList();
+		ArrayList<String> arrayListJ=new ArrayList();
 		
 		
-		for(int i=0;i<2;i++){
-			for(int j=0;j<2;j++){
-				System.out.println("Digite:  ");
-				ga.cramer[i][j]=op.next();
-				ga.cramer2=ga.cramer[i][j];
-				ga.removeVariavel(ga.cramer, i, j);
+		ga.ordemMatriz();
+		
+		
+			for(int i=0;i<ga.getX();i++){
+				arrayListI.add(JOptionPane.showInputDialog(null,"A:" ));
+				arrayListJ.add(JOptionPane.showInputDialog(null,"B:" ));
+		}
+		
+
+			for(int j=0;j<arrayListI.size();j++){
+				System.out.println("\n");
+				for(int i=0;i<arrayListI.size();i++){
+				System.out.print(arrayListI.get(i)+" ");
+			
 			}
 			
+			System.out.print(arrayListJ.get(j)+" ");
 		}
-
-}
+		
+		
+		}
 }
