@@ -178,34 +178,57 @@ class Gauss extends Matriz{
 
 }
 
+//ArrayList<ArrayList<String>> listaPrincipal=new ArrayList<ArrayList<String>>();
+//ArrayList<String> lista1=new ArrayList<String>();
+//ArrayList<String> lista2=new ArrayList<String>();
+//for(int i=0;i<10;i++){
+//lista1.add(""+i);
+//}
+//for(int i=11;i<20;i++){
+//lista2.add(""+i);
+//}
+//listaPrincipal.add(lista1);
+//listaPrincipal.add(lista2);
+//
+//// Percorre a lista principal pegando todos as lista
+//for(int i=0;i<listaPrincipal.size();i++){
+//ArrayList<String> aux=listaPrincipal.get(i);
+//for(int j=0;j<aux.size();j++){
+//System.out.println("ListaPrincipal["+i+"]["+j+"] = "+aux.get(j));
+//}
+//System.out.println("================== QUEBRA DE LISTA =============================");
+//}
+//for (String x:lista1){
+//	
+//	System.out.println(x);
+//}
+
 public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
 		Gauss ga=new Gauss();
-		
-		
-		ArrayList<ArrayList<String>> listaPrincipal=new ArrayList<ArrayList<String>>();
-		ArrayList<String> lista1=new ArrayList<String>();
-		ArrayList<String> lista2=new ArrayList<String>();
-		for(int i=0;i<10;i++){
-		lista1.add(""+i);
-		}
-		for(int i=11;i<20;i++){
-		lista2.add(""+i);
-		}
-		listaPrincipal.add(lista1);
-		listaPrincipal.add(lista2);
-		// Percorre a lista principal pegando todos as lista
-		for(int i=0;i<listaPrincipal.size();i++){
-		ArrayList<String> aux=listaPrincipal.get(i);
-		for(int j=0;j<aux.size();j++){
-		System.out.println("ListaPrincipal["+i+"]["+j+"] = "+aux.get(j));
-		}
-		System.out.println("==================QUEBRA DE LISTA=============================");
-		}
-
-		
-		
+		int x;
+		ArrayList<Integer> linhaI=new ArrayList();
+		ArrayList<Integer> colunaJ=new ArrayList();
+		ArrayList<ArrayList> matriz=new ArrayList();
+			ga.ordemMatriz();
+			for(int i=0;i<ga.getX();i++){
+				System.out.println("Linha: "+(i+1)+": ");
+				linhaI.add(x=op.nextInt());
+				System.out.println("Coluna" +(i+1)+": ");
+				colunaJ.add(x=op.nextInt());
+			}
+			matriz.add(linhaI);
+			matriz.add(colunaJ);
+			
+//			
+//			for(String k:matriz){
+//				System.out.print(k+" ");
+//			}
+//		for(int y:linhaI){
+//			System.out.print(y+" ");
+//			
+//		}
 		
 		
 
