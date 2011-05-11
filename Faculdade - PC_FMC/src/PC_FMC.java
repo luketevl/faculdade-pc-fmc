@@ -9,12 +9,13 @@ class Matriz{
 	Scanner op = new Scanner(System.in);
 	private int j, i,n,diagPrinc,diagSecond,sarrus;
 	private int x,y,xb,yb;
-	private int matriz[][],matrizB[][],matrizresult[][];	
+	private int matriz[][],matrizB[][],matrizresult[][];
+	
 
 	void principalMenu(){	//ok
 		int princMenu;
 		try{
-		princMenu=Integer.parseInt(JOptionPane.showInputDialog(null,"Deseja trabalhar com : \n 1 - Matriz \n 2 - Determinante","Seja Bem Vindo!",JOptionPane.QUESTION_MESSAGE));
+		princMenu=Integer.parseInt(JOptionPane.showInputDialog(null,"Deseja trabalhar com : \n 1 - Matriz \n 2 - Determinante \n 3 - Sistemas Lineares","Seja Bem Vindo!",JOptionPane.QUESTION_MESSAGE));
 		menuPrinc : switch(princMenu){
 		case(0):
 			break menuPrinc;
@@ -27,6 +28,10 @@ class Matriz{
 			mostrarMatriz();
 			criarMenu();
 			break;
+		case(3):
+			ordemMatriz();
+			criarMatriz();
+			criarMenuLineares();
 		}
 	}
 		catch(NumberFormatException e){
@@ -612,13 +617,34 @@ class Matriz{
 				utilizarSarrus();
 		}
 			if(option==0){
-				JOptionPane.showInputDialog(null,"Encerrando o Programa!","Aguarde",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null,"Encerrando o Programa!","Aguarde",JOptionPane.INFORMATION_MESSAGE);
 				break menu;
 			}
 			if(option <0 || option>2){
-				JOptionPane.showInputDialog(null, "Opção INVÁLIDA!","ERROR",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Opção INVÁLIDA!","ERROR",JOptionPane.ERROR_MESSAGE);
 				criarMenu();
 			}
+		}
+	}
+	void criarMenuLineares(){
+		int option=0;
+		menu : while(option==0){
+			option = Integer.parseInt(JOptionPane.showInputDialog(null,"Qual metodo deseja utilizar? \n 1 - Cramer \n 2 - Gauss"));
+			if(option==1){
+				
+			}
+			if(option==2){
+				
+			}
+			if(option==0){
+				JOptionPane.showMessageDialog(null,"Encerrando o Programa!","Aguarde",JOptionPane.INFORMATION_MESSAGE);
+				break menu;
+			}
+			if(option<0 || option>2){
+				JOptionPane.showMessageDialog(null, "Opção INVÁLIDA!","ERROR",JOptionPane.ERROR_MESSAGE);
+				criarMenuLineares();
+			}
+			
 		}
 	}
 	
@@ -650,6 +676,7 @@ class Matriz{
 		}		
 	}
 	
+
 	void mostrarMatrizResult(){	//ok ELEMENTOS GRAFICOS
 		String tst="";
 		for (i = 0; i < x; i++) {
@@ -785,6 +812,10 @@ class Matriz{
 		return y;
 	}
 	
+	public int getMatriz(int i,int j){
+		return matriz[i][j];
+	}
+	
 	void setX(int x){//ok
 		this.x=x;
 	}
@@ -824,6 +855,8 @@ class Matriz{
 	void setMatrizResult(int x,int yb){//ok
 		matrizresult=new int[x][yb];
 	}
+	
+	
 }
 
 public class PC_FMC {
