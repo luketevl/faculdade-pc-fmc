@@ -156,6 +156,32 @@ class Gauss extends Matriz{
 //			System.out.print(arrayListJ.get(j)+" ");
 //		}
 		
+//		=======================================================================================================
+			//ArrayList<ArrayList<String>> listaPrincipal=new ArrayList<ArrayList<String>>();
+			//ArrayList<String> lista1=new ArrayList<String>();
+			//ArrayList<String> lista2=new ArrayList<String>();
+			//for(int i=0;i<10;i++){
+			//lista1.add(""+i);
+			//}
+			//for(int i=11;i<20;i++){
+			//lista2.add(""+i);
+			//}
+			//listaPrincipal.add(lista1);
+			//listaPrincipal.add(lista2);
+			//
+			//// Percorre a lista principal pegando todos as lista
+			//for(int i=0;i<listaPrincipal.size();i++){
+			//ArrayList<String> aux=listaPrincipal.get(i);
+			//for(int j=0;j<aux.size();j++){
+			//System.out.println("ListaPrincipal["+i+"]["+j+"] = "+aux.get(j));
+			//}
+			//System.out.println("================== QUEBRA DE LISTA =============================");
+			//}
+			//for (String x:lista1){
+			//	
+//				System.out.println(x);
+			//}
+//=================================================================================================================
 		
 	}
 	
@@ -178,60 +204,34 @@ class Gauss extends Matriz{
 
 }
 
-//ArrayList<ArrayList<String>> listaPrincipal=new ArrayList<ArrayList<String>>();
-//ArrayList<String> lista1=new ArrayList<String>();
-//ArrayList<String> lista2=new ArrayList<String>();
-//for(int i=0;i<10;i++){
-//lista1.add(""+i);
-//}
-//for(int i=11;i<20;i++){
-//lista2.add(""+i);
-//}
-//listaPrincipal.add(lista1);
-//listaPrincipal.add(lista2);
-//
-//// Percorre a lista principal pegando todos as lista
-//for(int i=0;i<listaPrincipal.size();i++){
-//ArrayList<String> aux=listaPrincipal.get(i);
-//for(int j=0;j<aux.size();j++){
-//System.out.println("ListaPrincipal["+i+"]["+j+"] = "+aux.get(j));
-//}
-//System.out.println("================== QUEBRA DE LISTA =============================");
-//}
-//for (String x:lista1){
-//	
-//	System.out.println(x);
-//}
 
 public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
 		Gauss ga=new Gauss();
-		int x;
-		ArrayList<Integer> linhaI=new ArrayList();
-		ArrayList<Integer> colunaJ=new ArrayList();
-		ArrayList<ArrayList> matriz=new ArrayList();
-			ga.ordemMatriz();
-			for(int i=0;i<ga.getX();i++){
-				System.out.println("Linha: "+(i+1)+": ");
-				linhaI.add(x=op.nextInt());
-				System.out.println("Coluna" +(i+1)+": ");
-				colunaJ.add(x=op.nextInt());
-			}
-			matriz.add(linhaI);
-			matriz.add(colunaJ);
+		ga.ordemMatriz();
+		ga.criarMatriz();
+		
+		int teste[][]=new int[ga.getX()][ga.getY()];
+		int armazena[][]=new int[ga.getX()][1];
 			
-//			
-//			for(String k:matriz){
-//				System.out.print(k+" ");
+		// Pega coluna por coluna
+			for(int i=0;i<ga.getX();i++){
+//				armazena[i][0]=ga.getMatriz(i,0);
+				for(int j =0;j<ga.getY();j++){
+					armazena[i][0]=ga.getMatriz(j,i);
+				}
+					System.out.print("\n===========================\n"+armazena[i][0]);
+//				System.out.println("\n");
+			}
+			
+			
+//			for(int i=0;i<ga.getX();i++){
+//				for(int j =0;j<ga.getY();j++){
+//				
+//				System.out.print(armazena[i][0]+" ");
 //			}
-//		for(int y:linhaI){
-//			System.out.print(y+" ");
-//			
-//		}
-		
-		
-
-		
+//				System.out.println("\n");
+//			}
 		}
 }
