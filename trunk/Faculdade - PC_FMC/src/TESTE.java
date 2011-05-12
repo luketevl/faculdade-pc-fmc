@@ -7,9 +7,10 @@ import java.text.NumberFormat;
 
 class Gauss extends Matriz{
 	String ik[][];
-	String cramer[][]=new String[2][2];
+	int cramer[][];//=new int[getX()][getY()];
 	String cramer2;
 	int cramerResult;
+	int matriz[][];//=new int[getX()][getY()];
 	
 	void teste(){
 //		/*int x;
@@ -184,23 +185,56 @@ class Gauss extends Matriz{
 //=================================================================================================================
 		
 	}
-	
+		//ok
+	void clonaMatriz(){
+
+		matriz=new int [getX()][getY()];
+		cramer=new int [getX()][getY()];
+		
+		for(int i=0;i<getX();i++){
+			for(int j=0;j<getY();j++){
+				System.out.println("Digite: ");
+				int kj=op.nextInt();
+				matriz[i][j]=kj;
+				cramer[i][j]=matriz[i][j];
+			}
+		}
+	}
 	
 	void removeVariavel(String cramer[][],int i, int j){
 		cramer[i][j]=cramer[i][j].replace('x','a');
 	}
+	
 	void utilizarCramer(){
-			
-		utilizarSarrus();
-		for(int i=0;i<2;i++){
-			for(int j=0;j<2;j++){
-				cramer[j][i]=cramer[2-1][2-1];
+		
+		int cramer=0;
+			if(getX()==2 && getY()==3){
+				determinanteOrdem2();
+				cramer+=determinante;
+				System.out.println(cramer);
+				System.out.println(determinante);
 			}
-			utilizarSarrus();
-			cramerResult= getSarrus();
+				else if(getX()==3 && getY()==4){
+					utilizarSarrus();	
+				
+			}
+				else if(getX()==4 && getY()==5){
+					laplaceOrdem4();
+				}
+		
 		}
 		
-	}
+		
+//		utilizarSarrus();
+//		for(int i=0;i<2;i++){
+//			for(int j=0;j<2;j++){
+//				cramer[j][i]=cramer[2-1][2-1];
+//			}
+//			utilizarSarrus();
+//			cramerResult= getSarrus();
+//		}
+//		
+//	}
 
 }
 
@@ -211,27 +245,25 @@ public class TESTE {
 		Gauss ga=new Gauss();
 		ga.ordemMatriz();
 		ga.criarMatriz();
+		ga.clonaMatriz();
+		for(int i=0; i<ga.getX();i++){
+			ga.utilizarCramer();
+			for(int j=0; j<ga.getX();j++){
+				ga.matriz[j][i]=ga.cramer[j][ga.getY()-1];
+			}			
+		}
 		
-		int teste[][]=new int[ga.getX()][ga.getY()];
-		int armazena[][]=new int[ga.getX()][1];
-			
-		// Pega coluna por coluna
-			for(int i=0;i<ga.getX();i++){
-//				armazena[i][0]=ga.getMatriz(i,0);
-				for(int j =0;j<ga.getY();j++){
-					armazena[i][0]=ga.getMatriz(j,i);
-				}
-					System.out.print("\n===========================\n"+armazena[i][0]);
-//				System.out.println("\n");
-			}
-			
-			
-//			for(int i=0;i<ga.getX();i++){
-//				for(int j =0;j<ga.getY();j++){
-//				
-//				System.out.print(armazena[i][0]+" ");
+//			ga.clonaMatriz();
+				//============================================================================
+//		// Pega coluna por coluna
+//		for(int i=0;i<ga.getX();i++){
+////				armazena[i][0]=ga.getMatriz(i,0);
+//			for(int j =0;j<ga.getY();j++){
+//				armazena[i][0]=ga.getMatriz(j,i);
 //			}
-//				System.out.println("\n");
-//			}
+//			System.out.print("\n===========================\n"+armazena[i][0]);
+////				System.out.println("\n");
+//		}
+//		//============================================================================
 		}
 }
