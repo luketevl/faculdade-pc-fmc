@@ -2,6 +2,7 @@
 import java.util.Scanner;
 import java.text.NumberFormat;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 	
 class Matriz{
@@ -9,8 +10,12 @@ class Matriz{
 	Scanner op = new Scanner(System.in);
 	private int j, i,n,diagPrinc,diagSecond,sarrus;
 	private int x,y,xb,yb;
-	private int matriz[][],matrizB[][],matrizresult[][],cramer[][];;
-	public int diagPrincipal,diagSecundaria,determinante,cramerResult;;
+	double laPlace;
+	private int matriz[][],matrizB[][],matrizresult[][],cramer[][];
+	public int diagPrincipal,diagSecundaria,determinante,cramerResult;
+	public ArrayList<Integer> armazenaCramer=new ArrayList<Integer>();
+	public ArrayList<Double> armazenaDeterminanteCramer=new ArrayList<Double>();
+	String resultDeterminantes="";
 
 	void principalMenu(){	//ok
 		int princMenu;
@@ -792,9 +797,9 @@ class Matriz{
 			diagSecond = matriz[2][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[2][1] * matriz[1][2] + matriz[1][0] * matriz[0][1] * matriz[2][2];
 			int diagPrinc4 = diagPrinc - (diagSecond);
 			d=matriz[3][3]* Math.pow((-1),(4+4))* (diagPrinc4) ;
-			double total=detA+(c)+(b)+(d);
-			JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
-			//System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total));
+			laPlace=detA+(c)+(b)+(d);
+			JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(laPlace)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(laPlace));
 		
 	}
 	
@@ -897,22 +902,23 @@ class Matriz{
 	
 			if(getX()==2 && getY()==3){
 				determinanteOrdem2();
-				cramerResult+=determinante;
-//				System.out.println(cramerResult);
-//				System.out.println(determinante);
+				armazenaCramer.add(determinante);
+				
 			}
 				else if(getX()==3 && getY()==4){
-					utilizarSarrus();	
+					utilizarSarrus();
+					armazenaCramer.add(sarrus);
 				
 			}
 				else if(getX()==4 && getY()==5){
 					laplaceOrdem4();
+					armazenaCramer.add((int)laPlace);
 				}
 		
 		}
 	
 	void resolveCramer(){
-		for(int i=0; i<y;i++){
+		for(int i=0; i<x;i++){
 			if(i==0){
 			utilizarCramer();}
 			for(int j=0; j<x;j++){
@@ -923,12 +929,30 @@ class Matriz{
 			}
 			for(int k=0; k<x;k++){
 				matriz[k][i]=cramer[k][i];
-					System.out.print(matriz[k][i]+" ");
 			}
 		}
 		
 	}
+	
+	void determinantesDeCramer(){
+		for(int i=0;i<armazenaCramer.size();i++){
+//			System.out.println("Valores Determinantes: "+armazenaCramer);
+			if(i!=0){
+			armazenaDeterminanteCramer.add((double)armazenaCramer.get(0)/armazenaCramer.get(i));
+			}
+			else{
+				armazenaDeterminanteCramer.add((double)armazenaCramer.get(0));
+			}
+		}
+	}
 
+	void exibeDeterminantesDeCramer(){
+		for(double c:armazenaDeterminanteCramer){
+			resultDeterminantes+=Double.toString(c)+" ";
+		}
+		JOptionPane.showMessageDialog(null,"Valores das Determinantes "+resultDeterminantes,"Resultado de Cramer!",JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 	void removeVariavel(String cramer[][],int i, int j){
 		cramer[i][j]=cramer[i][j].replace('x','a');
 	}
@@ -946,5 +970,9 @@ public class PC_FMC {
 		mat.criarMatriz();
 		mat.clonaMatriz();
 		mat.resolveCramer();
+		mat.determinantesDeCramer();
+		mat.exibeDeterminantesDeCramer();
+		System.out.println("Resultados finais"+mat.armazenaCramer);
+		System.out.println("Resultados finais"+mat.armazenaDeterminanteCramer);
 	}
 }

@@ -1,8 +1,6 @@
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
-
-import java.io.ObjectInputStream.GetField;
 import java.text.NumberFormat;
 
 class Gauss extends Matriz{
