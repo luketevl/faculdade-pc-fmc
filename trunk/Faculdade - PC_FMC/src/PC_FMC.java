@@ -9,8 +9,8 @@ class Matriz{
 	Scanner op = new Scanner(System.in);
 	private int j, i,n,diagPrinc,diagSecond,sarrus;
 	private int x,y,xb,yb;
-	private int matriz[][],matrizB[][],matrizresult[][];
-	
+	private int matriz[][],matrizB[][],matrizresult[][],cramer[][];;
+	public int diagPrincipal,diagSecundaria,determinante,cramerResult;;
 
 	void principalMenu(){	//ok
 		int princMenu;
@@ -614,7 +614,7 @@ class Matriz{
 				utilizarLaplace();
 		}
 			if(option==2){
-				utilizarSarrus();
+				verificaSarrus();
 		}
 			if(option==0){
 				JOptionPane.showMessageDialog(null,"Encerrando o Programa!","Aguarde",JOptionPane.INFORMATION_MESSAGE);
@@ -676,7 +676,13 @@ class Matriz{
 		}		
 	}
 	
-
+	void determinanteOrdem2(){
+		diagPrincipal=matriz[0][0]*matriz[1][1];
+		diagSecundaria=matriz[0][1]*matriz[1][0];
+		determinante=diagPrincipal-(diagSecundaria);
+		JOptionPane.showMessageDialog(null,"Resultado é: "+NumberFormat.getIntegerInstance().format(determinante)+"","Determinante",JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 	void mostrarMatrizResult(){	//ok ELEMENTOS GRAFICOS
 		String tst="";
 		for (i = 0; i < x; i++) {
@@ -737,18 +743,61 @@ class Matriz{
 		}
 	}
 	
-	void utilizarSarrus(){ // Calculo ok 3x3
+	void verificaSarrus(){
 		if (x==3 && y==3){
-			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
-			diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
-			sarrus = diagPrinc - (diagSecond);
-			JOptionPane.showMessageDialog(null,"Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus)+"","Metodo Sarrus",JOptionPane.INFORMATION_MESSAGE);
+			utilizarSarrus();
 		}
 		else {
 			JOptionPane.showMessageDialog(null,"Sua matriz deve ser de Ordem 3 para utilizar o metodo de SARRUS! \n","ERROR!",JOptionPane.ERROR_MESSAGE);
 			redefinirOrdemMatriz();
 		}
 	}
+	void utilizarSarrus(){ // Calculo ok 3x3
+		
+			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
+			diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
+			sarrus = diagPrinc - (diagSecond);
+			JOptionPane.showMessageDialog(null,"Utilizando SARRUS o resultado é: "+NumberFormat.getIntegerInstance().format(sarrus)+"","Metodo Sarrus",JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+	
+	void laplaceOrdem4(){
+		double c,detA,b,result,d;
+		
+			// Calculo TO DO UTILIZANDO a PRIMEIRA COLUNA.
+			// 1 4
+			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
+			diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
+			int diagPrinc1 = diagPrinc - (diagSecond);
+			detA=matriz[0][3]* Math.pow((-1),(1+4))*(diagPrinc1);
+			//System.out.println(detA);
+			// 2 4
+			diagPrinc = matriz[0][0] * matriz[2][1] * matriz[3][2] + matriz[2][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[2][2];
+			diagSecond = matriz[0][2] * matriz[2][1] * matriz[3][0] + matriz[0][0] * matriz[3][1] * matriz[2][2] + matriz[2][0] * matriz[0][1] * matriz[3][2];			
+			int diagPrinc2=diagPrinc-(diagSecond);
+			c=matriz[1][3]* Math.pow((-1),(2+4)) * (diagPrinc2);
+			
+			
+			//System.out.println(c);
+			//3 4
+			
+			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[3][2] + matriz[1][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[1][2];
+			diagSecond = matriz[3][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[3][1] * matriz[3][1] + matriz[1][2] * matriz[0][1] * matriz[3][2];
+			int diagPrinc3 = diagPrinc - (diagSecond);
+			b=matriz[2][3]* Math.pow((-1),(3+4))* (diagPrinc3) ;
+			
+			// 4 4
+			
+			diagPrinc = matriz[0][0] * matriz[0][1] * matriz[0][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
+			diagSecond = matriz[2][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[2][1] * matriz[1][2] + matriz[1][0] * matriz[0][1] * matriz[2][2];
+			int diagPrinc4 = diagPrinc - (diagSecond);
+			d=matriz[3][3]* Math.pow((-1),(4+4))* (diagPrinc4) ;
+			double total=detA+(c)+(b)+(d);
+			JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
+			//System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total));
+		
+	}
+	
 	
 	void utilizarLaplace(){ // Calculo OK 3x3 e 4x4
 		if(x==y){
@@ -762,44 +811,14 @@ class Matriz{
 					//System.out.print("Utilizando LAPLACE o resultado é: "+ NumberFormat.getIntegerInstance().format(result));
 		}
 				if(x==4 && y==4){
-				 // Calculo TO DO UTILIZANDO a PRIMEIRA COLUNA.
-						// 1 4
-					diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
-					diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
-					int diagPrinc1 = diagPrinc - (diagSecond);
-					detA=matriz[0][3]* Math.pow((-1),(1+4))*(diagPrinc1);
-		//System.out.println(detA);
-						// 2 4
-					diagPrinc = matriz[0][0] * matriz[2][1] * matriz[3][2] + matriz[2][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[2][2];
-					diagSecond = matriz[0][2] * matriz[2][1] * matriz[3][0] + matriz[0][0] * matriz[3][1] * matriz[2][2] + matriz[2][0] * matriz[0][1] * matriz[3][2];			
-					int diagPrinc2=diagPrinc-(diagSecond);
-					c=matriz[1][3]* Math.pow((-1),(2+4)) * (diagPrinc2);
-				
-				
-	//System.out.println(c);
-						//3 4
-				
-					diagPrinc = matriz[0][0] * matriz[1][1] * matriz[3][2] + matriz[1][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[1][2];
-					diagSecond = matriz[3][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[3][1] * matriz[3][1] + matriz[1][2] * matriz[0][1] * matriz[3][2];
-					int diagPrinc3 = diagPrinc - (diagSecond);
-					b=matriz[2][3]* Math.pow((-1),(3+4))* (diagPrinc3) ;
-				
-					// 4 4
-
-					diagPrinc = matriz[0][0] * matriz[0][1] * matriz[0][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
-					diagSecond = matriz[2][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[2][1] * matriz[1][2] + matriz[1][0] * matriz[0][1] * matriz[2][2];
-					int diagPrinc4 = diagPrinc - (diagSecond);
-					d=matriz[3][3]* Math.pow((-1),(4+4))* (diagPrinc4) ;
-					double total=detA+(c)+(b)+(d);
-					JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
-					//System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(total));
-				
+				laplaceOrdem4();
 			}
-	} 
+	 
 		if(x!=3 && x!=4 || y!=3 && y!=4){
 			JOptionPane.showMessageDialog(null,"Para utilizar LAPLACE a matriz deve ser QUADRADA Ordem 3 ou 4","ERRO!",JOptionPane.ERROR_MESSAGE);
 		redefinirOrdemMatriz();
 	}
+		}
 		
 		//Laplace qlqr matriz quadrada.
 				
@@ -847,6 +866,10 @@ class Matriz{
 	void setMatrizB(){//ok
 		matrizB= new int[xb][yb];
 	}
+
+	void setCramer(){//ok
+		cramer= new int[x][y];
+	}
 	
 	void setMatrizResult(){//ok
 		matrizresult=new int[x][y];
@@ -856,13 +879,72 @@ class Matriz{
 		matrizresult=new int[x][yb];
 	}
 	
+	//=========================================================================================================
+	void clonaMatriz(){
+		setCramer();
+		for(int i=0;i<getX();i++){
+			for(int j=0;j<getY();j++){
+////				System.out.println("Digite: ");
+////				int kj=op.nextInt();
+//				matriz[i][j]=kj;
+				cramer[i][j]=matriz[i][j];
+			}
+		}
+	}
 	
+	void utilizarCramer(){
+		
+	
+			if(getX()==2 && getY()==3){
+				determinanteOrdem2();
+				cramerResult+=determinante;
+//				System.out.println(cramerResult);
+//				System.out.println(determinante);
+			}
+				else if(getX()==3 && getY()==4){
+					utilizarSarrus();	
+				
+			}
+				else if(getX()==4 && getY()==5){
+					laplaceOrdem4();
+				}
+		
+		}
+	
+	void resolveCramer(){
+		for(int i=0; i<y;i++){
+			if(i==0){
+			utilizarCramer();}
+			for(int j=0; j<x;j++){
+				matriz[j][i]=cramer[j][getY()-1];
+				if(j==x-1){
+					utilizarCramer();
+				}
+			}
+			for(int k=0; k<x;k++){
+				matriz[k][i]=cramer[k][i];
+					System.out.print(matriz[k][i]+" ");
+			}
+		}
+		
+	}
+
+	void removeVariavel(String cramer[][],int i, int j){
+		cramer[i][j]=cramer[i][j].replace('x','a');
+	}
+	
+	
+	//=========================================================================================================
 }
 
 public class PC_FMC {
 
 	public static void main(String args[]) {
 		Matriz mat = new Matriz();
-		mat.principalMenu();	
+//		mat.principalMenu();
+		mat.ordemMatriz();
+		mat.criarMatriz();
+		mat.clonaMatriz();
+		mat.resolveCramer();
 	}
 }
