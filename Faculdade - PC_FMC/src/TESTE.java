@@ -263,5 +263,27 @@ public class TESTE {
 ////				System.out.println("\n");
 //		}
 //		//============================================================================
+		
+//		void validaSistemaLineares(){
+//		int verif=0;
+//		for(int v=0;v<x;v++){
+//			if(cramer[v][y-1]==0){	
+//				verif++;
+//			}
+//		}
+//			if(verif==x){
+//				JOptionPane.showMessageDialog(null, "Sistema Linear Homogeneo","Tipo Sistema Linear",JOptionPane.INFORMATION_MESSAGE);
+//			}
+//		
+//		for(int v=1;v<armazenaDeterminanteCramer.size()-1;v++){
+//			if(armazenaDeterminanteCramer.get(v)==0){
+//				verif++;
+//			}
+//			if(verif==x){
+//				JOptionPane.showMessageDialog(null, "Sistema Linear Impossivel","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+//			}
+////			else if(verif!=0 &&verif)
+//		}	
+//	}
 		}
 }

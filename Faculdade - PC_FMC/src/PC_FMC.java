@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 class Matriz{
 	
 	Scanner op = new Scanner(System.in);
+	DecimalFormat duasCasas=new DecimalFormat("##.00");
 	private int j, i,n,diagPrinc,diagSecond,sarrus;
 	private int x,y,xb,yb;
 	double laPlace;
@@ -938,7 +940,7 @@ class Matriz{
 		for(int i=0;i<armazenaCramer.size();i++){
 //			System.out.println("Valores Determinantes: "+armazenaCramer);
 			if(i!=0){
-			armazenaDeterminanteCramer.add((double)armazenaCramer.get(0)/armazenaCramer.get(i));
+			armazenaDeterminanteCramer.add((double)armazenaCramer.get(i)/armazenaCramer.get(0));
 			}
 			else{
 				armazenaDeterminanteCramer.add((double)armazenaCramer.get(0));
@@ -948,15 +950,64 @@ class Matriz{
 
 	void exibeDeterminantesDeCramer(){
 		for(double c:armazenaDeterminanteCramer){
-			resultDeterminantes+=Double.toString(c)+" ";
+			resultDeterminantes+=Double.toString(c)+", ";
 		}
-		JOptionPane.showMessageDialog(null,"Valores das Determinantes "+resultDeterminantes,"Resultado de Cramer!",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null,"Valores das Determinantes S={"+(resultDeterminantes)+"}","Resultado de Cramer!",JOptionPane.INFORMATION_MESSAGE);
+		validaSistemaLineares();
 	}
 	
 	void removeVariavel(String cramer[][],int i, int j){
 		cramer[i][j]=cramer[i][j].replace('x','a');
 	}
 	
+	void validaSistemaLineares(){
+	int verif=0,verif2=0;
+	for(int v=0;v<x;v++){
+		if(cramer[v][y-1]==0){	
+			verif++;
+		}
+	}
+		if(verif==x){
+			JOptionPane.showMessageDialog(null, "Sistema Linear Homogeneo","Tipo Sistema Linear",JOptionPane.INFORMATION_MESSAGE);
+		}
+	
+	for(int v=1;v<armazenaDeterminanteCramer.size()-1;v++){
+		if(armazenaDeterminanteCramer.get(0)!=0){
+			JOptionPane.showMessageDialog(null, "Sistema Linear Possivel Determinado","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+		}
+		if(armazenaDeterminanteCramer.get(0)==0){
+			if(armazenaDeterminanteCramer.get(v)==0){
+				verif++;
+			}
+		}
+		if(verif==x){
+			JOptionPane.showMessageDialog(null, "Sistema Linear Possivel Indeterminado","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+		}
+		if(armazenaDeterminanteCramer.get(0)==0 && verif!=x ){
+			JOptionPane.showMessageDialog(null, "Sistema Linear Impossivel","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
+//		if(armazenaDeterminanteCramer.get(v)==0){
+//			verif++;
+//		}
+//
+//		if(verif==x){
+//			JOptionPane.showMessageDialog(null, "Sistema Linear Impossivel","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+//		}
+//		if(v!=1){
+//			if(armazenaDeterminanteCramer.get(v-1)==armazenaDeterminanteCramer.get(v)){
+//				verif2++;
+//			}
+//		}
+//		if(verif2==x){
+//			JOptionPane.showMessageDialog(null, "Sistema Linear Possivel Determinado","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+//		}
+//		else{
+//			JOptionPane.showMessageDialog(null, "Sistema Linear Possivel Indeterminado","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+//		}
+//		
+//	}	
+}
 	
 	//=========================================================================================================
 }
@@ -972,7 +1023,7 @@ public class PC_FMC {
 		mat.resolveCramer();
 		mat.determinantesDeCramer();
 		mat.exibeDeterminantesDeCramer();
-		System.out.println("Resultados finais"+mat.armazenaCramer);
-		System.out.println("Resultados finais"+mat.armazenaDeterminanteCramer);
+//		System.out.println("Resultados finais"+mat.armazenaCramer);
+//		System.out.println("Resultados finais"+mat.armazenaDeterminanteCramer);
 	}
 }
