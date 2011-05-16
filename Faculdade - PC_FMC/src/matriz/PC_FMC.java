@@ -1,9 +1,10 @@
-
+package matriz;
 import java.util.Scanner;
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
 
 	
 class Matriz{
@@ -638,7 +639,10 @@ class Matriz{
 		menu : while(option==0){
 			option = Integer.parseInt(JOptionPane.showInputDialog(null,"Qual metodo deseja utilizar? \n 1 - Cramer \n 2 - Gauss"));
 			if(option==1){
-				
+				clonaMatriz();
+				resolveCramer();
+				determinantesDeCramer();
+				exibeDeterminantesDeCramer();
 			}
 			if(option==2){
 				
@@ -672,6 +676,16 @@ class Matriz{
 			}
 		}
 	}
+	
+	void criarMatrizJTextFieldFormatted(JFormattedTextField[][] test){ //ok
+		for (i = 0; i < x; i++) {
+			for (j = 0; j < y; j++) {
+				//n=Integer.parseInt(test[i][j].getText());
+				matriz[i][j] = Integer.parseInt(test[i][j].getText());;
+			}
+		}
+	}
+	
 
 	void criarMatrizB(){ //ok
 		int n;
@@ -956,9 +970,32 @@ class Matriz{
 		validaSistemaLineares();
 	}
 	
+	
+	
+	void exibeDeterminantesDeCramerJFormattedTextField(ArrayList<JFormattedTextField> deter){
+		trataNaN();
+		for(int i=0;i<armazenaDeterminanteCramer.size();i++){
+			deter.get(i).setText(armazenaDeterminanteCramer.get(i).toString());
+			
+		}
+		JOptionPane.showMessageDialog(null,"Valores das Determinantes S={"+(resultDeterminantes)+"}","Resultado de Cramer!",JOptionPane.INFORMATION_MESSAGE);
+		validaSistemaLineares();
+	}
+	
+	
 	void removeVariavel(String cramer[][],int i, int j){
 		cramer[i][j]=cramer[i][j].replace('x','a');
 	}
+
+void trataNaN(){
+	for(int i=0;i<armazenaDeterminanteCramer.size();i++){
+		if(armazenaDeterminanteCramer.get(i).isNaN()){
+			String troca;
+			troca=armazenaDeterminanteCramer.get(i).toString().replace("NaN", "0.0");
+			armazenaDeterminanteCramer.set(i, Double.parseDouble(troca));
+		}
+	}
+}	
 	
 	void validaSistemaLineares(){
 	int verif=0,verif2=0;
@@ -974,6 +1011,7 @@ class Matriz{
 	for(int v=1;v<armazenaDeterminanteCramer.size()-1;v++){
 		if(armazenaDeterminanteCramer.get(0)!=0){
 			JOptionPane.showMessageDialog(null, "Sistema Linear Possivel Determinado","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
+			break;
 		}
 		if(armazenaDeterminanteCramer.get(0)==0){
 			if(armazenaDeterminanteCramer.get(v)==0){
@@ -1016,13 +1054,10 @@ public class PC_FMC {
 
 	public static void main(String args[]) {
 		Matriz mat = new Matriz();
-//		mat.principalMenu();
-		mat.ordemMatriz();
-		mat.criarMatriz();
-		mat.clonaMatriz();
-		mat.resolveCramer();
-		mat.determinantesDeCramer();
-		mat.exibeDeterminantesDeCramer();
+		mat.principalMenu();
+//		mat.ordemMatriz();
+//		mat.criarMatriz();
+//		
 //		System.out.println("Resultados finais"+mat.armazenaCramer);
 //		System.out.println("Resultados finais"+mat.armazenaDeterminanteCramer);
 	}
