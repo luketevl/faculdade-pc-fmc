@@ -786,39 +786,79 @@ class Matriz{
 		double c,detA,b,result,d;
 		
 			// Calculo TO DO UTILIZANDO a PRIMEIRA COLUNA.
-			// 1 4
+			// 4 4
 			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
 			diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
 			int diagPrinc1 = diagPrinc - (diagSecond);
-			detA=matriz[0][3]* Math.pow((-1),(1+4))*(diagPrinc1);
-			//System.out.println(detA);
+			detA=matriz[3][3]* Math.pow((-1),(4+4))*(diagPrinc1);
+//			System.out.println(detA);
 			// 2 4
 			diagPrinc = matriz[0][0] * matriz[2][1] * matriz[3][2] + matriz[2][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[2][2];
 			diagSecond = matriz[0][2] * matriz[2][1] * matriz[3][0] + matriz[0][0] * matriz[3][1] * matriz[2][2] + matriz[2][0] * matriz[0][1] * matriz[3][2];			
 			int diagPrinc2=diagPrinc-(diagSecond);
-			c=matriz[1][3]* Math.pow((-1),(2+4)) * (diagPrinc2);
+			c=matriz[1][3]* Math.pow((-1),(4+4)) * (diagPrinc2);
 			
 			
-			//System.out.println(c);
+//			System.out.println(c);
 			//3 4
 			
 			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[3][2] + matriz[1][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[1][2];
-			diagSecond = matriz[3][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[3][1] * matriz[3][1] + matriz[1][2] * matriz[0][1] * matriz[3][2];
+			diagSecond = matriz[3][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[3][1] * matriz[1][2] + matriz[1][0] * matriz[0][1] * matriz[3][2];
 			int diagPrinc3 = diagPrinc - (diagSecond);
 			b=matriz[2][3]* Math.pow((-1),(3+4))* (diagPrinc3) ;
+			System.out.println(b);
+			// 1 4
 			
-			// 4 4
-			
-			diagPrinc = matriz[0][0] * matriz[0][1] * matriz[0][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
-			diagSecond = matriz[2][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[2][1] * matriz[1][2] + matriz[1][0] * matriz[0][1] * matriz[2][2];
+			diagPrinc = matriz[1][0] * matriz[2][1] * matriz[3][2] + matriz[1][1] * matriz[2][2] * matriz[3][0] + matriz[1][2]* matriz[2][0] * matriz[3][1];
+			diagSecond = matriz[1][2] * matriz[2][1] * matriz[3][0] + matriz[2][2] * matriz[3][1] * matriz[1][0] + matriz[3][2] * matriz[1][1] * matriz[2][0];
 			int diagPrinc4 = diagPrinc - (diagSecond);
-			d=matriz[3][3]* Math.pow((-1),(4+4))* (diagPrinc4) ;
+			d=matriz[0][3]* Math.pow((-1),(1+4))* (diagPrinc4) ;
+			System.out.println(d);
+			
 			laPlace=detA+(c)+(b)+(d);
 			JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(laPlace)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
 			//System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(laPlace));
 		
 	}
+
 	
+//	void laplaceOrdem4(){
+//		double c,detA,b,result,d;
+//		
+//			// Calculo TO DO UTILIZANDO a PRIMEIRA COLUNA.
+//			// 1 4
+//			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
+//			diagSecond = matriz[0][2] * matriz[1][1] * matriz[2][0] + matriz[1][2] * matriz[2][1] * matriz[0][0] + matriz[2][2] * matriz[0][1] * matriz[1][0];
+//			int diagPrinc1 = diagPrinc - (diagSecond);
+//			detA=matriz[0][3]* Math.pow((-1),(1+4))*(diagPrinc1);
+//			//System.out.println(detA);
+//			// 2 4
+//			diagPrinc = matriz[0][0] * matriz[2][1] * matriz[3][2] + matriz[2][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[2][2];
+//			diagSecond = matriz[0][2] * matriz[2][1] * matriz[3][0] + matriz[0][0] * matriz[3][1] * matriz[2][2] + matriz[2][0] * matriz[0][1] * matriz[3][2];			
+//			int diagPrinc2=diagPrinc-(diagSecond);
+//			c=matriz[1][3]* Math.pow((-1),(2+4)) * (diagPrinc2);
+//			
+//			
+//			//System.out.println(c);
+//			//3 4
+//			
+//			diagPrinc = matriz[0][0] * matriz[1][1] * matriz[3][2] + matriz[1][0] * matriz[3][1] * matriz[0][2] + matriz[3][0]* matriz[0][1] * matriz[1][2];
+//			diagSecond = matriz[3][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[3][1] * matriz[3][1] + matriz[1][2] * matriz[0][1] * matriz[3][2];
+//			int diagPrinc3 = diagPrinc - (diagSecond);
+//			b=matriz[2][3]* Math.pow((-1),(3+4))* (diagPrinc3) ;
+//			
+//			// 4 4
+//			
+//			diagPrinc = matriz[0][0] * matriz[0][1] * matriz[0][2] + matriz[1][0] * matriz[2][1] * matriz[0][2] + matriz[2][0]* matriz[0][1] * matriz[1][2];
+//			diagSecond = matriz[2][0] * matriz[1][1] * matriz[0][2] + matriz[0][0] * matriz[2][1] * matriz[1][2] + matriz[1][0] * matriz[0][1] * matriz[2][2];
+//			int diagPrinc4 = diagPrinc - (diagSecond);
+//			d=matriz[3][3]* Math.pow((-1),(4+4))* (diagPrinc4) ;
+//			laPlace=detA+(c)+(b)+(d);
+//			JOptionPane.showMessageDialog(null,"Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(laPlace)+"","Metodo LAPLACE",JOptionPane.INFORMATION_MESSAGE);
+//			//System.out.print("Utilizando LAPLACE o resultado é: "+NumberFormat.getIntegerInstance().format(laPlace));
+//		
+//	}
+
 	
 	void utilizarLaplace(){ // Calculo OK 3x3 e 4x4
 		if(x==y){
@@ -970,7 +1010,10 @@ class Matriz{
 		validaSistemaLineares();
 	}
 	
-	
+	void zeraArrayListDeterminantes(){
+		for(int i=0;i<armazenaDeterminanteCramer.size();i++);
+			armazenaDeterminanteCramer.removeAll(armazenaDeterminanteCramer);
+	}
 	
 	void exibeDeterminantesDeCramerJFormattedTextField(ArrayList<JFormattedTextField> deter){
 		trataNaN();
@@ -978,7 +1021,7 @@ class Matriz{
 			deter.get(i).setText(armazenaDeterminanteCramer.get(i).toString());
 			
 		}
-		JOptionPane.showMessageDialog(null,"Valores das Determinantes S={"+(resultDeterminantes)+"}","Resultado de Cramer!",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null," OH DOIDO Valores das Determinantes S={"+(armazenaDeterminanteCramer)+"}","Resultado de Cramer!",JOptionPane.INFORMATION_MESSAGE);
 		validaSistemaLineares();
 	}
 	

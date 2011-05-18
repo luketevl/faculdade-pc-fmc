@@ -223,17 +223,6 @@ class Gauss extends Matriz{
 		
 		}
 		
-		
-//		utilizarSarrus();
-//		for(int i=0;i<2;i++){
-//			for(int j=0;j<2;j++){
-//				cramer[j][i]=cramer[2-1][2-1];
-//			}
-//			utilizarSarrus();
-//			cramerResult= getSarrus();
-//		}
-//		
-//	}
 
 }
 
@@ -242,49 +231,10 @@ public class TESTE {
 	public static void main(String args[]){
 		Scanner op = new Scanner(System.in);
 		Gauss ga=new Gauss();
-		ga.ordemMatriz();
-		ga.criarMatriz();
-		ga.clonaMatriz();
-		for(int i=0; i<ga.getX();i++){
-			ga.utilizarCramer();
-			for(int j=0; j<ga.getX();j++){
-				ga.matriz[j][i]=ga.cramer[j][ga.getY()-1];
-			}			
-		}
-		
-//			ga.clonaMatriz();
-				//============================================================================
-//		// Pega coluna por coluna
-//		for(int i=0;i<ga.getX();i++){
-////				armazena[i][0]=ga.getMatriz(i,0);
-//			for(int j =0;j<ga.getY();j++){
-//				armazena[i][0]=ga.getMatriz(j,i);
-//			}
-//			System.out.print("\n===========================\n"+armazena[i][0]);
-////				System.out.println("\n");
-//		}
-//		//============================================================================
-		
-//		void validaSistemaLineares(){
-//		int verif=0;
-//		for(int v=0;v<x;v++){
-//			if(cramer[v][y-1]==0){	
-//				verif++;
-//			}
-//		}
-//			if(verif==x){
-//				JOptionPane.showMessageDialog(null, "Sistema Linear Homogeneo","Tipo Sistema Linear",JOptionPane.INFORMATION_MESSAGE);
-//			}
-//		
-//		for(int v=1;v<armazenaDeterminanteCramer.size()-1;v++){
-//			if(armazenaDeterminanteCramer.get(v)==0){
-//				verif++;
-//			}
-//			if(verif==x){
-//				JOptionPane.showMessageDialog(null, "Sistema Linear Impossivel","Classificacao Sistemas Lineares",JOptionPane.INFORMATION_MESSAGE);
-//			}
-////			else if(verif!=0 &&verif)
-//		}	
-//	}
+		int x=12345;
+		String y="-1x+4y+5+6";
+//		y=y.replaceAll("^-[a-z]+$","");
+//		y=y.replace("+","");
+		System.out.println(y);
 		}
 }
